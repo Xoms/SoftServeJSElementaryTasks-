@@ -1,16 +1,13 @@
-function runTask1(){
-
-    var length = parseInt(document.getElementById("task1Length").value); 
-    var	width = parseInt(document.getElementById("task1Width").value); 
-    var	symb = document.getElementById("task1Symbol").value;
-    var resTask1 = document.getElementById("resTask1");	
-
-    calculateChessStr(length,width,symb);
+function runTask1(){  
+    if (!Task1.validateParams()) {
+        Task1.showErrMsg();
+        return;
+    }   
+    Task1.showResult(Task1.calculateChessStr());
 }
 
 function runTask2() {        
     if (!Task2.validateParams()) {
-        console.log("----")
         Task2.showErrMsg();
         return;
     }   

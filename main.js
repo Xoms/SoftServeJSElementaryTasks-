@@ -7,11 +7,7 @@ function runTask1(){
 }
 
 function runTask2() {        
-    if (!Task2.validateParams()) {
-        Task2.showErrMsg();
-        return;
-    }   
-    
-    Task2.showResult(Task2.calcEnvelopeEntries());
+    Task2.parseData();    
+    Task2.calcEnvelopeEntries();
 }
 

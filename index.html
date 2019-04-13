@@ -23,7 +23,7 @@
 		</ul> 
 	</div>
 
-	<!-- Tasks -->
+	<!-- *****************************Tasks 1*******************************-->
 	<div id = "task1">
 		<h2>1. Шахматная доска</h2>
 		Вывести шахматную доску с заданными размерами высоты и ширины, 
@@ -59,6 +59,7 @@
 		<hr>
 	</div>
 
+	<!-- *****************************Tasks 2*******************************-->
 	<div id = "task2">
 		<h2>2. Анализ конвертов</h2>
 		Есть два конверта со сторонами (a,b) и (c,d). Требуется определить, 
@@ -67,6 +68,7 @@
 		<br>
 		<br>
 		<em>Входные параметры:</em> объекты конверт1 и конверт2 
+		
 		<div class = "dataInput">
 			Конверт №1: 
 			<br>
@@ -90,10 +92,11 @@
 		<br>
 		<span id = "resTask2"></span>
 		<br>
-		<button onclick = runTask2()>Go</button>
+		<button onclick = "runTask2()">Впихнуть</button>
 		<hr>
 	</div>
 
+	<!-- *****************************Tasks 3*******************************-->
 	<div id = "task3">
 		<h2>3. Сортировка треугольников</h2>
 		Вывести треугольники в порядке убывания их площади.
@@ -121,18 +124,28 @@
 		</ul>
 
 		<div class = "dataInput">
-
+			Вершины треугольника (например ABC || CDE || BLA и т.п три символа)
+			<br>
+			<input type = "text" id = "vertices" value = "ABC"> </input>
 			<br>
 			Сторона a
-			<input type = "text" id = "envelope2_ab" value = "0"> </input>
+			<input type = "text" id = "side_a" value ="0"> </input>
 			<br>
 			Сторона b
-			<input type = "text" id = "envelope2_cd" value = "0"> </input>
-
+			<input type = "text" id = "side_b" value = "0"> </input>
+			<br>
+			Сторона c
+			<input type = "text" id = "side_c" value = "0"> </input>
 		</div>
+		<button onclick = "getCurrentTriangle()"> Добавить треугольник <button>
+
+		<button onclick = "runTask3()"> Сортировать </button>
+		<br>
+		<div id = "resTask3"></div>
 		<hr>
 	</div>
 
+	<!-- *****************************Tasks 4*******************************-->
 	<div id = "task4">
 		<h2>4. Палиндром</h2>
 		Проверить является ли число или его часть палиндромом. Например, число 
@@ -146,6 +159,7 @@
 		<hr>
 	</div>
 
+	<!-- *****************************Tasks 5*******************************-->
 	<div id = "task5">
 		<h2>5. Счастливые билеты</h2>
 		Есть 2 способа подсчёта счастливых билетов: <br>
@@ -164,6 +178,7 @@
 		<hr>
 	</div>
 
+	<!-- *****************************Tasks 6*******************************-->
 	<div id = "task6">
 		<h2>6. Числовая последовательность</h2>
 		Вывести через запятую ряд длиной n, состоящий из натуральных чисел, 
@@ -174,6 +189,7 @@
 		<hr>
 	</div>
 
+	<!-- *****************************Tasks 7*******************************-->
 	<div id = "task7">
 		<h2>7. Ряд Фибоначчи для диапазона</h2>
 		Вывести все числа Фибоначчи, которые удовлетворяют переданному в 
@@ -188,6 +204,7 @@
 
 <script type="text/javascript" src="src/task1.js"></script>
 <script type="text/javascript" src="src/task2.js"></script>
+<script type="text/javascript" src="src/task3.js"></script>
 <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

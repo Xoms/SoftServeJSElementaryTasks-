@@ -1,13 +1,46 @@
+var errState;
+
+//********************Task1 ***************
 function runTask1(){  
-    if (!Task1.validateParams()) {
-        Task1.showErrMsg();
-        return;
-    }   
-    Task1.showResult(Task1.calculateChessStr());
+    Task1.parseData();    
+    Task1.generateChessStr();
 }
 
+//********************Task2 ***************
 function runTask2() {        
     Task2.parseData();    
     Task2.calcEnvelopeEntries();
 }
+
+//********************Task3 ***************
+function getCurrentTriangle (){    
+    Task3.getParams();
+    errState = Task3.validateParams();
+
+    if (!errState) {
+        Task3.pushTriangle (); 
+        Task3.showCurrentArray ();       
+    } else {
+        Task3.showErrMsg(errState);
+    }     
+}
+
+function runTask3() {
+    Task3.generateSortedArr();
+
+    if (Task3.result.lenght > 0) {
+        Task3.showResult();
+    } else {
+        Task3.showErrMsg(5);
+    } //5 - не было введено ни одного треугольника
+
+}
+
+//********************Task4 ***************
+
+//********************Task5 ***************
+
+//********************Task6 ***************
+
+//********************Task7 ***************
 

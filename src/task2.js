@@ -34,17 +34,13 @@ Task2.parseData = function () {
 }
 
 //Проверка введенных даных
-Task2.validateParams = function () {    
-    
-    if (envelope1.ab <= 0 || isNaN(envelope1.ab) || 
+Task2.validateParams = function () {  
+    Task2.parseData();  
+    console.log (isNaN(envelope1.ab));
+    return !(envelope1.ab <= 0 || isNaN(envelope1.ab) || 
         envelope1.cd <= 0 || isNaN(envelope1.cd) ||
         envelope2.ab <= 0 || isNaN(envelope2.ab) ||
-        envelope2.cd <= 0 || isNaN(envelope2.cd)) { 
-
-        return false;
-    }
-    
-    return true; 
+        envelope2.cd <= 0 || isNaN(envelope2.cd) );
 }
 
 //Сообщение об ошибке ввода параметров
@@ -56,29 +52,41 @@ showErrMsg = function () {
 //Вывод результатов
 //result - будет результатом выполнения Task2.calcEnvelopeEntries
 showResult = function (result) {
-    resField.style.color = "green";
+    resField.style.color = "green";    
     if (result) {
         resField.innerHTML = "Конверт №" + result + " вмещается в другой";
-        return;
-    } 
-
-    resField.innerHTML = "Ни оди из конвертов не вмещается в другой";
+        
+    } else {
+        resField.innerHTML = "Ни оди из конвертов не вмещается в другой";
+    }
 }
 
 //Проверка на влезание конвертов друг вдруга (сопссно вычисления)
 Task2.calcEnvelopeEntries = function () { 
     Task2.parseData();
+
     if (!Task2.validateParams()) {
         showErrMsg();
-        return;
-    }     //+ для того чтоб не сравнивались как строки (по другому - Number())
-    if ((+envelope1.ab > +envelope2.ab && +envelope1.cd > +envelope2.cd) || 
-        (+envelope1.cd > +envelope2.ab && +envelope1.ab > +envelope2.cd)) {
-        res = 2; //Вмещается 2-й 
-    } else if ((+envelope2.ab > +envelope1.ab && +envelope2.cd > +envelope1.cd) 
-        || (+envelope2.cd > +envelope1.ab && +envelope2.ab > +envelope1.cd)) {
-        res = 1; //Вмещается 1-й
-    } else res = 0; //Не вмещаются
+        return; // Должен быть, т.к. параметры не верны и дальше нет смысла
+    }
+
+    function pifagor (a,b,c,d) {
+        return ( (a*b>2*c*d) && 
+            ((c*c+d*d-b*b)*(c*c+d*d-a*a)<=a*a*b*b-4*a*b*c*d+4*c*c*d*d));
+    }; //для проверки влезания по диагонали
+    
+
+    if ( pifagor(envelope1.ab, envelope1.cd, envelope2.ab, envelope2.cd) 
+        || (+envelope1.ab > +envelope2.ab && +envelope1.cd > +envelope2.cd) 
+        || (+envelope1.cd > +envelope2.ab && +envelope1.ab > +envelope2.cd) ) {
+            res = 2; //Вмещается 2-й  
+            
+    } else if ( pifagor(envelope2.ab, envelope2.cd, envelope1.ab, envelope1.cd) 
+        || (+envelope2.ab > +envelope1.ab && +envelope2.cd > +envelope1.cd) 
+        || (+envelope2.cd > +envelope1.ab && +envelope2.ab > +envelope1.cd) ) {
+            res = 1; //Вмещается 1-й
+    } else { res = 0;} //Не вмещаются
+    
     showResult(res);
 }
 

@@ -1,58 +1,64 @@
 (function () {
-
+//Переменные
 window.Task1 = {};
 var length; 
 var width; 
 var	symb;
 var resField = document.getElementById("resTask1");	
 
-Task1.getParams = function () {
+Task1.parseData = function () {
 	length = document.getElementById("task1Length").value; 
 	width = document.getElementById("task1Width").value; 
 	symb = document.getElementById("task1Symbol").value;
 }
 //Сопссно расчет строки в виде шахмат
-Task1.calculateChessStr = function () {
+Task1.generateChessStr = function () {
+
     var str = "";
     var i = 0;
-    
+
+    Task1.parseData();
+
+    if (!Task1.validateParams()) {
+    	showErrMsg();
+    	return;
+    }
+
     while (i < length) {
     	if (i%2 !== 0){ 
      	   str +="  ";
     	}        // 2 пробела в начало нечетных строк
-    	for (let j = 0; j < (length); j++){
+    	for (var j = 0; j < width; j++){
      	   str += symb + "  ";	// разделительный символ + 2 пробела	 	
     	}
-    	str += "\n"; // перевод строки в конце заданной длины
-    	++i;
+    	str += "\n"; // перевод строки в конце заданной ширины
+    	i++;
 	}
-	console.log(str);
-	return str;	
+	
+	showResult(str);
 }
 
 //Проверки
-Task1.validateParams = function () {	
-	Task1.getParams()
-	if (isNaN(length) || isNaN(width) ||
+Task1.validateParams = function () {		
+	return !( isNaN(length) || isNaN(width) ||
 		!Number.isInteger(+length) || !Number.isInteger(+width) || 
-		length <= 0 || width <=0 ||
-		symb == "" || symb.length > 1){
-		  
-		return false;
-	}
-	
-	return true;
+		length <= 0 || width <= 0 ||
+		symb.length != 1);
 }
 
 
 //Вывод сообщений
-Task1.showErrMsg = function () {
-	resField.innerHTML = "Длина/ширина - целое положительное число, Символ - не пустой и всего 1!";
+function showErrMsg() {
+	resField.innerHTML = `Длина/ширина - целое положительное число. 
+		Cимвол - не пустой и всего 1!`;
 	resField.style.color = "red";
 }
-Task1.showResult = function (result) {
+
+function showResult(result) {
 	resField.innerHTML = "<pre>" + result + "</pre>";
 	resField.style.color = "green";
 }
+
+Object.freeze(Task1);
 
 })();

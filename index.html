@@ -158,6 +158,7 @@
 		не удалось.
 
 		<button onclick = "runTask4()"> Понеслась</button>
+		<div id = "resTask4"></div>
 		<hr>
 		
 	</div>
@@ -176,8 +177,19 @@
 		их большее количество на заданном интервале. <br>
 
 		<em>Входные параметры:</em> объект context с полями min и max <br>
+		
+		<div class = "dataInput">
+			Min номер билета:
+			<input type = "text" id = "minTicketNumber" value ="000000"> </input>
+			<br>
+			Max номер билета:
+			<input type = "text" id = "maxTicketNumber" value = "999999"> </input>
+		</div>
+
 		<em>Выход:</em> объект с информацией о победившем методе и количестве 
-		счастливых билетов для каждого способа подсчёта.
+		счастливых билетов для каждого способа подсчёта. <br>
+		<button onclick = "runTask5()">Подсчитать билеты</button> <br>
+		<div id = "resTask5"></div>
 		<hr>
 	</div>
 
@@ -189,6 +201,7 @@
 
 		<em>Входные параметры:</em> длина и значение минимального квадрата <br>
 		<em>Выход:</em> строка с рядом чисел <br>
+		<button onclick = "runTask6()">Go</button>
 		<hr>
 	</div>
 
@@ -201,7 +214,8 @@
 
 		<em>Входные параметры:</em> объект context с полями min и max, 
 		либо с полем length 
-		<em>Выход:</em> массив чисел
+		<em>Выход:</em> массив чисел<br>
+		<button onclick = "runTask7()">Go</button>
 	</div>
 
 
@@ -209,6 +223,9 @@
 <script type="text/javascript" src="src/task2.js"></script>
 <script type="text/javascript" src="src/task3.js"></script>
 <script type="text/javascript" src="src/task4.js"></script>
+<script type="text/javascript" src="src/task5.js"></script>
+<script type="text/javascript" src="src/task6.js"></script>
+<script type="text/javascript" src="src/task7.js"></script>
 <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

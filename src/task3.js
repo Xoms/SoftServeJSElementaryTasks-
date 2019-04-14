@@ -2,21 +2,23 @@
 
 window.Task3 = {};
 
-var arrOfTriangles = []; 
-var triangle = {}; //current triangle
-var resField = document.getElementById("resTask3"); 
+ 
 
+var resField = document.getElementById("resTask3"); 
+var arrOfTriangles = [];
 
 Task3.getParams = function () {
-    
+    var triangle = {}; //current triangle
+
     triangle.vertices = document.getElementById("vertices").value; 
-    triangle.a = document.getElementById("side_a").value; 
-    triangle.b = document.getElementById("side_b").value;
-    triangle.c = document.getElementById("side_c").value;    
+    triangle.a = +document.getElementById("side_a").value; 
+    triangle.b = +document.getElementById("side_b").value;
+    triangle.c = +document.getElementById("side_c").value;
+    return triangle;    
 }
 
 //Проверки
-Task3.validateParams = function () {    
+Task3.validateParams = function (triangle) {    
     //Task3.getParams();
     
     if (isNaN(triangle.a) || isNaN(triangle.b) || isNaN(triangle.c)) {
@@ -39,16 +41,14 @@ Task3.validateParams = function () {
                      //0 - ok;
 }
 
-Task3.pushTriangle = function() {
-    arrOfTriangles.push(triangle);
-    for (var key in arrOfTriangles) {
-        console.log (key);
-        console.log (arrOfTriangles[key]);
-    }
+Task3.pushTriangle = function(triangle) {    
+    arrOfTriangles.push(triangle);        
 }
+
 Task3.showCurrentArray = function() {
-    
+        resField.style.color = "green";
         resField.innerHTML = "Текущий массив: "
+
         for (var i = 0; i < arrOfTriangles.length; i++){
             resField.innerHTML += "{ " + arrOfTriangles[i].vertices + 
                 ", " + arrOfTriangles[i].a + 
@@ -60,7 +60,7 @@ Task3.showCurrentArray = function() {
 //Вывод сообщений
 Task3.showErrMsg = function (errState) {
     resField.style.color = "red";
-    console.log (errState);
+    
     switch (errState){
         case 1 : 
             resField.innerHTML = "Стороны должны быть числом";
@@ -80,20 +80,29 @@ Task3.showErrMsg = function (errState) {
 }
 
 Task3.showResult = function () {
-    resField.innerHTML = "<pre>" + this.result + "</pre>";
     resField.style.color = "green";
+    
+    for (var i = 0; i < Task3.result.length; i++){
+        resField.innerHTML += Task3.result[i].vertices + ", s =" +
+            Task3.result[i].s + "<br>";
+    }
+    
 }
 
 
-Task3.generateSortedArr = function (){
+Task3.generateSortedArr = function (arr){
     var halfP;
 
     //получение площади для каждого треугольника
+
     for (var i = 0; i < arrOfTriangles.length; i++){
+       
         halfP = (arrOfTriangles[i].a + arrOfTriangles[i].b + 
             arrOfTriangles[i].c)/2; //Полупериметр
-        arrOfTriangles[i].s = Math.sqr(halfP * (halfP - arrOfTriangles[i].a) *
+         console.log (halfP);
+        arrOfTriangles[i].s = Math.sqrt(halfP * (halfP - arrOfTriangles[i].a) *
             (halfP - arrOfTriangles[i].b) * (halfP - arrOfTriangles[i].c));
+        console.log (arrOfTriangles[i].s);
     }   //формула Герона
 
     function triangleCompare (tr1, tr2) { //функция для сортировки

@@ -14,40 +14,44 @@ function runTask2() {
 }
 
 //********************Task3 ***************
-var tmpArr = []; // Временный массив треугольников для Task3
+/*Тут мы видим ТОЛЬКО результат срабатывания кнопок (тоесть):
+    - Проверки происходят не динамически (это плохо);
+    - Нажатия на кнопки при не корректных данных доступны (хз, +\-);
+    - Проверка на корректность проходит ПО ВСЕМ полям сразу (это плохо);
+    - Проверка генерит пояснение о ошибке ввода (это +);
+*/
+
+
 
 function getCurrentTriangle (){    
     //Получаем исходные данные
+    
+    //triangles - массив внутри замыкания Task3
+
     var triangle = Task3.getParams(); 
-    Task3.context.triangle = triangle;
+   
 
-    //Генерим код ошибки (если нет - 0)
-    errState = Task3.validateParams(Task3.context);
+    //Генерим код ошибки ввода (если нет - 0)
+    errState = Task3.validateParams(triangle);
 
-    if (!errState) { //Ошибки нет
-        
-        console.log (Task3.context.triangle);
-        tmpArr = Task3.context.triangles;  
+    if (!errState) { //Если ошибки ввода нет (!0 == true)
+        //текущий треугольник
+        console.log (triangle);
 
-        console.log(tmpArr);
+        //к текущему массиву (в замыкании Task3) добавим элемент
+        Task3.pushTriangle(triangle);       
 
-        tmpArr = Task3.pushTriangle(tmpArr, triangle);
-        Task3.context.triangles = tmpArr;
-        //console.log (tmpArr);
-        
-
-
-        console.log (Task3.context.triangles + ' ' + triangle);
-
-        Task3.showCurrentArray(Task3.context.triangles); // Текущий массив               
+        Task3.showCurrentArray(); // Текущий массив (из замыкания Task3)             
     } else {
         Task3.showErrMsg(errState);
     }     
 }
 
 function runTask3() {
-    var result = Task3.generateResult(Task3.context.triangles);
-    console.log (result.length);
+    //result - отсортированный массив треугольников
+    //Task3.generateResult() - выполняет вычисление площади и сортировку по ней
+    var result = Task3.generateResult();
+    console.log ("Result length: " + result.length);
 
     if (result.length > 0) {
         Task3.showResult(result);

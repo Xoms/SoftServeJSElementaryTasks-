@@ -1,19 +1,28 @@
 
 /* ============= Navigation ================== */
-#nav {background-color:  grey;
+#nav {
+    
+    background-color:  black;    
+    text-shadow: 1px, 1px, 2px grey;
+    font-size: 20px; /*1.2em*/  
     text-align: center;
     position: -webkit-sticky; /*Safari*/
     position: sticky;
     top: 0;
 }
 #nav > ul > li { display: inline-block;
-                padding: 5px;}
+                padding: 10px;}
 
 #nav > ul > li > a {text-decoration: none;
-                    color: black;
-                    }
+                    color: white;                   
+                   }
 
 #nav >ul > li > a:hover {background-color: #cccccc;}
+
+/* ========================= Statements =====================*/
+.statements {position: sticky;
+            position: -webkit-sticky;
+            top: 70px; }
 
 /* ========================= Data Input Fields ============== */
 .dataInput {margin: 10px;}

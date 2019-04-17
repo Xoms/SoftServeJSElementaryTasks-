@@ -1,4 +1,5 @@
-var errState;
+var errState; // переменная для состояния ошибки
+
 
 //********************Task1 ***************
 function runTask1(){  
@@ -13,27 +14,46 @@ function runTask2() {
 }
 
 //********************Task3 ***************
-function getCurrentTriangle (){    
-    var triangle = Task3.getParams();
-    errState = Task3.validateParams(triangle);
+var tmpArr = []; // Временный массив треугольников для Task3
 
-    if (!errState) {
-        Task3.pushTriangle(triangle); 
-        Task3.showCurrentArray();       
+function getCurrentTriangle (){    
+    //Получаем исходные данные
+    var triangle = Task3.getParams(); 
+    Task3.context.triangle = triangle;
+
+    //Генерим код ошибки (если нет - 0)
+    errState = Task3.validateParams(Task3.context);
+
+    if (!errState) { //Ошибки нет
+        
+        console.log (Task3.context.triangle);
+        tmpArr = Task3.context.triangles;  
+
+        console.log(tmpArr);
+
+        tmpArr = Task3.pushTriangle(tmpArr, triangle);
+        Task3.context.triangles = tmpArr;
+        //console.log (tmpArr);
+        
+
+
+        console.log (Task3.context.triangles + ' ' + triangle);
+
+        Task3.showCurrentArray(Task3.context.triangles); // Текущий массив               
     } else {
         Task3.showErrMsg(errState);
     }     
 }
 
 function runTask3() {
-    Task3.generateSortedArr();
-    console.log (Task3.result.length);
+    var result = Task3.generateResult(Task3.context.triangles);
+    console.log (result.length);
 
-    if (Task3.result.length > 0) {
-        Task3.showResult();
+    if (result.length > 0) {
+        Task3.showResult(result);
     } else {
-        Task3.showErrMsg(5);
-    } //5 - не было введено ни одного треугольника
+        Task3.showErrMsg(7);
+    } //7 - не было введено ни одного треугольника
 
 }
 

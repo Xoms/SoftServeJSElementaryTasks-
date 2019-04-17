@@ -137,10 +137,10 @@
 			Сторона c
 			<input type = "text" id = "side_c" value = "0"> </input>
 		</div>
-		<button onclick = "getCurrentTriangle()"> Добавить треугольник <button>
-
+		<button onclick = "getCurrentTriangle()"> Добавить треугольник </button>
+		
 		<button onclick = "runTask3()"> Сортировать </button>
-		<br>
+		
 		<div id = "resTask3"></div>
 		<hr>
 	</div>
@@ -150,14 +150,17 @@
 		<h2>4. Палиндром</h2>
 		Проверить является ли число или его часть палиндромом. Например, число 
 		1234437 не является палиндромом, но является палиндромом его часть 
-		3443. 
+		3443, а также 44. 
 		Числа меньшие, чем 10 палиндромом не считать.
 		<br>
 		<em>Входные параметры:</em> число
-		<em>Выход:</em> извлечённый из числа палиндром либо 0, если извлечение 
-		не удалось.
-
+		<div class = "dataInput"> 
+			Введите число:
+			<input type = "text" id = "palindrome" placeholder="1234437">				
+			</input>
 		<button onclick = "runTask4()"> Понеслась</button>
+		<em>Выход:</em> извлечённый из числа палиндром либо 0, если извлечение 
+		не удалось. <br>		
 		<div id = "resTask4"></div>
 		<hr>
 		
@@ -177,18 +180,24 @@
 		их большее количество на заданном интервале. <br>
 
 		<em>Входные параметры:</em> объект context с полями min и max <br>
+			<pre>  
+				min &#8805; 0  <!-- >= -->
+				max  &#8804; 999999 <!-- <= -->
+			</pre>
 		
 		<div class = "dataInput">
 			Min номер билета:
-			<input type = "text" id = "minTicketNumber" value ="000000"> </input>
+			<input type = "text" id = "minTicketNumber" placeholder ="0 or 000000">
+			</input>
 			<br>
 			Max номер билета:
-			<input type = "text" id = "maxTicketNumber" value = "999999"> </input>
+			<input type = "text" id = "maxTicketNumber" placeholder = "999999">
+			</input>
 		</div>
 
 		<em>Выход:</em> объект с информацией о победившем методе и количестве 
 		счастливых билетов для каждого способа подсчёта. <br>
-		<button onclick = "runTask5()">Подсчитать билеты</button> <br>
+		<button onclick = "runTask5()">Подсчитать билеты </button> <br>
 		<div id = "resTask5"></div>
 		<hr>
 	</div>
@@ -200,6 +209,15 @@
 		квадрат которых не меньше заданного m. <br>
 
 		<em>Входные параметры:</em> длина и значение минимального квадрата <br>
+		<div class = "dataInput">
+
+			Длина (кол-во цифр):
+			<input type = "text" id = "leпgthInpField" value ="000000"> </input>
+			<br>
+			До числа:
+			<input type = "text" id = "numInpField" value = "999999"> </input>
+		</div>
+
 		<em>Выход:</em> строка с рядом чисел <br>
 		<button onclick = "runTask6()">Go</button>
 		<hr>
@@ -213,8 +231,21 @@
 		указанную длину. <br>
 
 		<em>Входные параметры:</em> объект context с полями min и max, 
-		либо с полем length 
+		либо с полем length
+
+		<div class = "dataInput">
+			По кол-ву чисел в результате (length):
+			<input type = "text" id = "fibLen" value ="0"> </input>
+			<br>
+			От min:
+			<input type = "text" id = "fibMin" value = "0"> </input>
+			<br>
+			До max:
+			<input type = "text" id = "fibMax" value = "0"> </input>
+		</div>
+
 		<em>Выход:</em> массив чисел<br>
+
 		<button onclick = "runTask7()">Go</button>
 	</div>
 

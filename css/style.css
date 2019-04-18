@@ -23,6 +23,7 @@
 .statements {position: sticky;
             position: -webkit-sticky;
             top: 70px; }
+#vertices {margin-left: 91px;}
 
 /* ========================= Data Input Fields ============== */
 .dataInput {margin: 10px;}

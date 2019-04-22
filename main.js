@@ -28,11 +28,11 @@ function getCurrentTriangle (){
     
     //triangles - массив внутри замыкания Task3
 
-    var triangle = Task3.getParams(); 
+    let triangle = Task3.getParams(); 
    
 
     //Генерим код ошибки ввода (если нет - 0)
-    errState = Task3.validateParams(triangle);
+    let errState = Task3.validateParams(triangle);
 
     if (!errState) { //Если ошибки ввода нет (!0 == true)
         //текущий треугольник
@@ -63,11 +63,23 @@ function runTask3() {
 
 //********************Task4 ***************
 function runTask4() {
-    Task4.run();
+    let errState;
+    let params = Task4.getParams();
+    let result;
+    let resField = document.getElementById("resTask4").innerHTML = "";
+
+    console.log (params);
+    errState = Task4.validateParams(params);
+    if (errState) {
+        Task4.showErrMsg(errState);
+    } else {
+        result = Task4.run(params);
+        Task4.showResult(result);
+    }
 }
 //********************Task5 ***************
 function runTask5() {
-    var context = {}; /*Объект состояния вычислений
+    let context = {}; /*Объект состояния вычислений
                         хранит исходные данные, коды ошибок,
                         результаты вычислений */
    
@@ -87,11 +99,33 @@ function runTask5() {
 //********************Task6 ***************
 
 function runTask6() {
-    Task6.run();
+    let context = {};
+    let errState;
+    let result;
+    
+    context = Task6.getParams();
+    errState = Task6.validateParams(context);
+    if (errState) {
+        Task6.showErrMsg(errState);
+    } else {
+       result = Task6.run(context); 
+       Task6.showResult(result);
+    }
 }
 
 //********************Task7 ***************
 function runTask7() {
-    Task7.run();
+    let context = {};
+    let errState;
+    let result;
+    
+    context = Task7.getParams();
+    errState = Task7.validateParams(context);
+    if (errState) {
+        Task7.showErrMsg(errState);
+    } else {
+       result = Task7.run(context); 
+       Task7.showResult(result);
+    }
 }
 

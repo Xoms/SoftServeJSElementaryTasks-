@@ -42,14 +42,13 @@
 			<input type = "text" id = "task1Length" value="3" 
 			 oninput(validateParamsT1())>
 			</input> 
-			<span id = "validateTask1Length"></span> 
-		</div>
-		<div class = "dataInput"> 
+			<span id = "validateTask1Length"></span>
+			<br> 
+		
 			Ширина:
 			<input type = "text" id = "task1Width" value = "3"></input> 
 			<span id = "validateTask1Width"></span>
-		</div>
-		<div class = "dataInput">
+			<br>
 			Символ:
 			<input type = "text" id = "task1Symbol" value = "*"></input> 
 			<span id = "validateTask1Symbol"></span>
@@ -80,8 +79,7 @@
 			<br>
 			Сторона c,d			
 			<input type = "text" id = "envelope1_cd" value = "0"> </input>
-		</div>
-		<div class = "dataInput">
+		<br>
 			Конверт №2: 
 			<br>
 			Сторона a,b
@@ -168,7 +166,7 @@
 		<button onclick = "runTask4()"> Понеслась</button>
 		<em>Выход:</em> извлечённый из числа палиндром либо 0, если извлечение 
 		не удалось. <br>		
-		<div id = "resTask4"></div>
+		<div class = "resField" id = "resTask4"></div>
 		<hr>
 		</div>
 	</div>
@@ -222,14 +220,16 @@
 		<div class = "dataInput">
 
 			Длина (кол-во цифр):
-			<input type = "text" id = "leпgthInpField" value ="000000"> </input>
+			<input type = "text" id = "leпgthInpField" value ="6"> </input>
 			<br>
 			До числа:
 			<input type = "text" id = "numInpField" value = "999999"> </input>
 		</div>
 
 		<em>Выход:</em> строка с рядом чисел <br>
+
 		<button onclick = "runTask6()">Go</button>
+		<div id = "resTask6"></div>
 		<hr>
 	</div>
 
@@ -260,6 +260,7 @@
 		<em>Выход:</em> массив чисел<br>
 
 		<button onclick = "runTask7()">Go</button>
+		<div id = "resTask7"></div>
 	</div>
 
 	</div>

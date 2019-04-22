@@ -1,14 +1,14 @@
 //Счастливые билетики
-(function () {  
+Task5 = (function () {  
 
-window.Task5 = {};
+let Task5 = {};
 
-var resField = document.getElementById("resTask5");
+let resField = document.getElementById("resTask5");
 
 
 
 Task5.getParams = function (){
-    var context = {};
+    let context = {};
     context.min = document.getElementById("minTicketNumber").value;
     context.max = document.getElementById("maxTicketNumber").value;
     
@@ -148,5 +148,5 @@ Task5.showResult = function(context) {
 
     }
 }
-
+return Task5;
 })();

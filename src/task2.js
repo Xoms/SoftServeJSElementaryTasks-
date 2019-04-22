@@ -1,4 +1,4 @@
-(function () {  
+let Task2 = (function () {  
 /*Таким образом это самописный модуль, без подключения сторонних библиотек
   для избежания коллизий имен
 
@@ -18,25 +18,25 @@
 
 
 //********Переменные**********
-window.Task2 = {}; //Объект для методов выполнения задания
-var envelope1 = {}; //Первый конверт
-var envelope2 = {}; // Второй конверт
-var res; // Результат (принимает значения 0, 1, 2)
-var resField = document.getElementById("resTask2"); //Поле вывода результатов
+let Task2 = {};
+let envelope1 = {}; //Первый конверт
+let envelope2 = {}; // Второй конверт
+let res; // Результат (принимает значения 0, 1, 2)
+const resField = document.getElementById("resTask2"); //Поле вывода результатов
                                                     //или ошибок 
 
 //Получение исходных данных
 Task2.parseData = function () {    
-    envelope1.ab = document.getElementById("envelope1_ab").value;
-    envelope1.cd = document.getElementById("envelope1_cd").value;
-    envelope2.ab = document.getElementById("envelope2_ab").value;
-    envelope2.cd = document.getElementById("envelope2_cd").value;   
+    envelope1.ab = +document.getElementById("envelope1_ab").value;
+    envelope1.cd = +document.getElementById("envelope1_cd").value;
+    envelope2.ab = +document.getElementById("envelope2_ab").value;
+    envelope2.cd = +document.getElementById("envelope2_cd").value;   
 }
 
 //Проверка введенных даных
 Task2.validateParams = function () {  
     Task2.parseData();  
-    console.log (isNaN(envelope1.ab));
+    
     return !(envelope1.ab <= 0 || isNaN(envelope1.ab) || 
         envelope1.cd <= 0 || isNaN(envelope1.cd) ||
         envelope2.ab <= 0 || isNaN(envelope2.ab) ||

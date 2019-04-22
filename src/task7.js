@@ -1,39 +1,61 @@
-( function (){
-window.Task7 = {};
+let Task7 = ( function (){
 
-/* По козырной формуле Бине
-function fibRange( from, to) {
-  if( isNaN(from) || isNaN(to) || from < 2 || from > to) {
-    throw "Bad argument(s)";
-  }
-  
-  var root5 = Math.sqrt(5), phi = (1 + root5)/2, logPhi = Math.log(phi);
-  var nFrom = Math.ceil( Math.log((from - 0.5) * root5) / logPhi);
-  var nTo = Math.floor( Math.log((to+0.5) * root5) / logPhi);
+let Task7 = {};
+const inputField = document.querySelectorAll(".dataInput");
+const resField = document.getElementById("resTask7");
+let context = {};
 
-  function nthFib(n) {
-    return Math.round( (Math.pow(phi, n) - Math.pow( -phi, -n)) / (2 * phi - 1));
-  }
-  
-  var prev = nthFib(nFrom);
-  var result = [prev];
-  if( nFrom === nTo) return result;
-  var cur = nFrom + 1;
-  var nxt = nthFib(cur);
-  while( cur <= nTo) {
-    result.push(nxt);
-    nxt = cur + nxt;
-    cur = nxt - cur;
-    i++;
-  }
-  
-  return result;
-} */
-Task7.run = function (){
 
-var context = {len: 4,
-           from: 10,
-           to: 1000};
+Task7.getParams = function (){
+    let context = {};
+    context.len = inputField[6].querySelectorAll("input")[0].value; 
+    context.from = inputField[6].querySelectorAll("input")[1].value;
+    context.to = inputField[6].querySelectorAll("input")[2].value;
+    return context;
+}
+
+Task7.validateParams = function (context){
+    for(let name in context) {
+        if (context[name] < 0 ) {
+            errState = 1;
+        } else if ( isNaN(+context[name])) {
+            errState = 2;
+        } 
+    } 
+    if (!Number.isInteger(+context.len)) {
+        errState = 3;
+    } else {
+        errState = 0;
+    }
+    return errState;
+}
+
+Task7.showErrMsg = function(errState) {
+    resField.style.color = "red";
+
+    switch (errState) {
+        case 1: 
+            resField.innerHTML ="Поля должны быть > 0";
+            break;
+        case 2: 
+            resField.innerHTML ="Поля должны быть числами";
+            break;
+        case 3:
+            resField.innerHTML ="Поле 'Длина' должно быть целым числом";
+    }
+}
+Task7.showResult = function (context) {
+    resField.style.color = "green";
+    resField.innerHTML = "arrByLength: " + context.arrByLength + "<br>";
+    resField.innerHTML += "arrInRange: " + context.arrInRange;
+}
+
+
+
+
+// var context = {len: 4,
+//            from: 10,
+//            to: 1000};
 
 function fibByLen (context){
     context.arrByLength = [1,1];
@@ -43,7 +65,7 @@ function fibByLen (context){
     var nxt = cur + prev;
 
     while (true){
-        nxtStr=String(nxt);
+        nxtStr="" + nxt;
 
         if (nxtStr.length <= context.len){
             context.arrByLength.push(nxt);
@@ -77,17 +99,16 @@ function fibInRange (context) {
 }
     
  
+Task7.run = function (context){
+  fibByLen(context);
+  console.log(context.len);
+  console.log(context.arrByLength);
 
-fibByLen(context);
-console.log(context.len);
-console.log(context.arrByLength);
+  fibInRange(context);
+  console.log(context.from + " " + context.to);
+  console.log(context.arrInRange);
+  return context;
+} 
 
-fibInRange(context);
-console.log(context.from + " " + context.to);
-console.log(context.arrInRange);
-
-
-
-} // task7.run();
-
+return Task7;
 })();

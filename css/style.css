@@ -21,8 +21,8 @@
 
 /* ========================= Statements =====================*/
 .statements {position: sticky;
-            position: -webkit-sticky;
-            top: 70px; }
+    position: -webkit-sticky;
+    top: 100px;}
 #vertices {margin-left: 91px;}
 
 /* ========================= Data Input Fields ============== */

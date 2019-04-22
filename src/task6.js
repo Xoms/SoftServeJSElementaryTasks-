@@ -1,11 +1,55 @@
-(function () {
+let Task6 = (function () {
 
-window.Task6 = {};
+let Task6 = {};
+const inputField = document.querySelectorAll(".dataInput");
+const resField = document.getElementById("resTask6");
+let context = {};
 
-Task6.run = function (){
-var context = {len : 4, //кол-во знаков
-               num : 2048 // число 
-               };
+
+Task6.getParams = function (){
+    let context = {};
+    context.len = inputField[5].querySelectorAll("input")[0].value; 
+    context.num = inputField[5].querySelectorAll("input")[1].value;
+    console.log (context.len);
+    return context;
+}
+
+Task6.validateParams = function (context){
+    for(let name in context) {
+        if (context[name] < 0 ) {
+            errState = 1;
+        } else if ( isNaN(+context[name])) {
+            errState = 2;
+        } 
+    } 
+    if (!Number.isInteger(+context.len)) {
+        errState = 3;
+    } else {
+        errState = 0;
+    }
+    return errState;
+}
+
+Task6.showErrMsg = function(errState) {
+    resField.style.color = "red";
+
+    switch (errState) {
+        case 1: 
+            resField.innerHTML ="Поля должны быть > 0";
+            break;
+        case 2: 
+            resField.innerHTML ="Поля должны быть числами";
+            break;
+        case 3:
+            resField.innerHTML ="Поле 'Длина' должно быть целым числом";
+    }
+}
+
+Task6.showResult = function (context) {
+    resField.style.color = "green";
+    resField.innerHTML = "arrByNum: " + context.arrByNum + "<br>";
+    resField.innerHTML += "arrByLength: " + context.arrByLength;
+}
 
 function makeArrByLength (context){
     //1) len
@@ -36,14 +80,16 @@ function makeArrByNumber (context){
     }
 };
 
-makeArrByLength(context);
-makeArrByNumber (context);
+Task6.run = function (context){
+    makeArrByLength(context);
+    makeArrByNumber (context);
+    
 
-console.log (context.num);
-console.log ("arrByNum: " + context.arrByNum);
-console.log (context.len);
-console.log ("arrByLength: " + context.arrByLength);
-
+    console.log (context.num);
+    console.log ("arrByNum: " + context.arrByNum);
+    console.log (context.len);
+    console.log ("arrByLength: " + context.arrByLength);
+    return context;
 }
-
+return Task6;
 })();

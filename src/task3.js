@@ -2,8 +2,8 @@
 
 window.Task3 = {};
 
-var triangles = [];
-var resField = document.getElementById("resTask3"); 
+let triangles = [];
+const resField = document.getElementById("resTask3"); 
 
 
 Task3.getParams = function () {

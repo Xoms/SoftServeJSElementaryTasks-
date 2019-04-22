@@ -8,21 +8,23 @@ function runTask1(){
 }
 
 //********************Task2 ***************
-function runTask2() {        
-    Task2.parseData();    
-    Task2.calcEnvelopeEntries();
+function runTask2() {  
+    let params = [];      
+    let result;
+    params = Task2.getParams();
+    console.log (params);
+
+    if (!Task2.validateParams(...params)){
+        Task2.showErrMsg (...params);
+    } else {   
+        result = Task2.calcEnvelopeEntries(...params);
+        Task2.showResult(result);
+    }
+    return;
 }
 
 //********************Task3 ***************
-/*Тут мы видим ТОЛЬКО результат срабатывания кнопок (тоесть):
-    - Проверки происходят не динамически (это плохо);
-    - Нажатия на кнопки при не корректных данных доступны (хз, +\-);
-    - Проверка на корректность проходит ПО ВСЕМ полям сразу (это плохо);
-    - Проверка генерит пояснение о ошибке ввода (это +);
-*/
-
-
-
+//Add current triangle to array of triangles
 function getCurrentTriangle (){    
     //Получаем исходные данные
     

@@ -91,10 +91,10 @@ Task3.showCurrentArray = function() {
     resField.innerHTML = "Текущий массив: ";
 
     for (var i = 0; i < triangles.length; i++){
-        resField.innerHTML += "{ " + triangles[i].vertices + 
-            ", " + triangles[i].a + 
-            ", " + triangles[i].b + 
-            ", " + triangles[i].c + " }" + "<br>";
+        resField.innerHTML += `{ ${triangles[i].vertices} 
+            , ${triangles[i].a}  
+            , ${triangles[i].b}  
+            , ${triangles[i].c} }`;
     }
 }
 

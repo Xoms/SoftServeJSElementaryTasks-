@@ -11,7 +11,7 @@
 <body>
 	<h1>JS Elementary Tasks WebUI - 162</h1>
 	<!-- NAVIGATION -->
-	<div id = "nav">		
+	<div class = "nav">		
 		<ul>
 			<li><a href="#task1">Шахматная доска</a></li>
 			<li><a href="#task2">Анализ конвертов</a></li>
@@ -20,10 +20,12 @@
 			<li><a href="#task5">Счастливые билеты</a></li>
 			<li><a href="#task6">Числовая последовательность</a></li>
 			<li><a href="#task7">Ряд Фибоначчи для диапазона</a></li>
+			<li><a href="src/Tests/tests.html"> Тесты </a></li>
 		</ul> 
 	</div>
 
 	<!-- *****************************Tasks 1*******************************-->
+<div class = "content">
 	<div class = "statement" id = "task1">
 		<div>
 		<h2>1. Шахматная доска</h2>
@@ -53,9 +55,9 @@
 			<input type = "text" id = "task1Symbol" value = "*"></input> 
 			<span id = "validateTask1Symbol"></span>
 		</div>
-		<em>Выход:</em> строка с представлением шахматной доски <br>
-		<span id = "resTask1"></span> <br>
+		<em>Выход:</em> строка с представлением шахматной доски <br>		
 		<button onclick = "runTask1()">Go</button>
+		<div class = "resField" id = "resTask1"></div>
 		<hr>
 		</div>
 	</div>
@@ -75,25 +77,24 @@
 			Конверт №1: 
 			<br>
 			Сторона a,b 
-			<input type = "text" id = "envelope1_ab" value = "0"> </input>
+			<input type = "text" value = "0"> </input>
 			<br>
 			Сторона c,d			
-			<input type = "text" id = "envelope1_cd" value = "0"> </input>
-		<br>
+			<input type = "text" value = "0"> </input>
+			<br>
 			Конверт №2: 
 			<br>
 			Сторона a,b
-			<input type = "text" id = "envelope2_ab" value = "0"> </input>
+			<input type = "text" value = "0"> </input>
 			<br>
 			Сторона c,d
-			<input type = "text" id = "envelope2_cd" value = "0"> </input>
+			<input type = "text" value = "0"> </input>
 		</div>
 		<em>Выход:</em> номер конверта который можно вложить, если 
 		вложение возможно, 0 – если вложение невозможно.
-		<br>
-		<span id = "resTask2"></span>
-		<br>
+		<br>		
 		<button onclick = "runTask2()">Впихнуть</button>
+		<div class = "resField" id = "resTask2"></div>
 		<hr>
 		</div>
 	</div>
@@ -101,52 +102,52 @@
 	<!-- *****************************Tasks 3*******************************-->
 	<div class = "statement" id = "task3">
 		<div>
-		<h2>3. Сортировка треугольников</h2>
-		Вывести треугольники в порядке убывания их площади.
-		<br>
-		<br>
-		<em>Входные параметры:</em> массив объектов треугольник <br>
-		<em>Выход:</em> упорядоченный массив имён треугольников <br>
-		<em><b>Примечание:</b></em>
-		<ul>
-			<li>Расчёт площади треугольника должен производится по формуле
-			 Герона.</li>
-			<li>Каждый треугольник определяется именами вершин и длинами его
-			 сторон. </li>
-			<li>Приложение должно обрабатывать ввод чисел с плавающей точкой:
+			<h2>3. Сортировка треугольников</h2>
+			Вывести треугольники в порядке убывания их площади.
 			<br>
-				<pre>
-					{ 
-					vertices: ‘ABC’,
-					a: 10,
-					b: 20,
-					c: 22.36
-					}
-				</pre>
-			</li>
-		</ul>
+			<br>
+			<em>Входные параметры:</em> массив объектов треугольник <br>
+			<em>Выход:</em> упорядоченный массив имён треугольников <br>
+			<em><b>Примечание:</b></em>
+			<ul>
+				<li>Расчёт площади треугольника должен производится по формуле
+				 Герона.</li>
+				<li>Каждый треугольник определяется именами вершин и длинами его
+				 сторон. </li>
+				<li>Приложение должно обрабатывать ввод чисел с плавающей точкой:
+				<br>
+					<pre>
+						{ 
+						vertices: ‘ABC’,
+						a: 10,
+						b: 20,
+						c: 22.36
+						}
+					</pre>
+				</li>
+			</ul>
 
-		<div class = "dataInput">
-			Вершины треугольника (например ABC || CDE || BLA и т.п три символа)
-			<br>
-			<input type = "text" id = "vertices" value = "ABC"> </input>
-			<br>
-			Сторона a
-			<input type = "text" id = "side_a" value ="1"> </input>
-			<br>
-			Сторона b
-			<input type = "text" id = "side_b" value = "1"> </input>
-			<br>
-			Сторона c
-			<input type = "text" id = "side_c" value = "1"> </input>
+			<div class = "dataInput">
+				Вершины треугольника (например ABC || CDE || BLA и т.п три символа)
+				<br>
+				<input type = "text" id = "vertices" value = "ABC"> </input>
+				<br>
+				Сторона a
+				<input type = "text" id = "side_a" value ="1"> </input>
+				<br>
+				Сторона b
+				<input type = "text" id = "side_b" value = "1"> </input>
+				<br>
+				Сторона c
+				<input type = "text" id = "side_c" value = "1"> </input>
+			</div>
+			<button onclick = "getCurrentTriangle()"> Добавить треугольник </button>
+			
+			<button onclick = "runTask3()"> Сортировать </button> 
+			
+			<div class = "resField" id = "resTask3"></div>
+			<hr>
 		</div>
-		<button onclick = "getCurrentTriangle()"> Добавить треугольник </button>
-		
-		<button onclick = "runTask3()"> Сортировать </button>
-		
-		<div id = "resTask3"></div>
-		<hr>
-	</div>
 	</div>
 
 	<!-- *****************************Tasks 4*******************************-->
@@ -161,7 +162,7 @@
 		<em>Входные параметры:</em> число
 		<div class = "dataInput"> 
 			Введите число:
-			<input type = "text" id = "palindrome" placeholder="1234437">				
+			<input type = "text" id = "palindrome" value="1234437">				
 			</input>
 		<button onclick = "runTask4()"> Понеслась</button>
 		<em>Выход:</em> извлечённый из числа палиндром либо 0, если извлечение 
@@ -204,9 +205,9 @@
 		<em>Выход:</em> объект с информацией о победившем методе и количестве 
 		счастливых билетов для каждого способа подсчёта. <br>
 		<button onclick = "runTask5()">Подсчитать билеты </button> <br>
-		<div id = "resTask5"></div>
+		<div class = "resField" id = "resTask5"></div>
 		<hr>
-	</div>
+		</div>
 	</div>
 
 	<!-- *****************************Tasks 6*******************************-->
@@ -228,11 +229,10 @@
 
 		<em>Выход:</em> строка с рядом чисел <br>
 
-		<button onclick = "runTask6()">Go</button>
-		<div id = "resTask6"></div>
+		<button onclick = "runTask6()">Go</button> <br>
+		<div class = "resField" id = "resTask6"></div>
 		<hr>
-	</div>
-
+		</div>
 	</div>
 
 	<!-- *****************************Tasks 7*******************************-->
@@ -259,11 +259,11 @@
 
 		<em>Выход:</em> массив чисел<br>
 
-		<button onclick = "runTask7()">Go</button>
-		<div id = "resTask7"></div>
+		<button onclick = "runTask7()">Go</button> <br>
+		<div class = "resField" id = "resTask7"></div>
+		</div>
 	</div>
-
-	</div>
+</div>
 
 
 <script type="text/javascript" src="src/task1.js"></script>

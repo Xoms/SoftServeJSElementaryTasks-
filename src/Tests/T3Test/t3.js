@@ -1,5 +1,3 @@
-let Task3 = (function () {
-
 let Task3 = {};
 
 let triangles = [];
@@ -161,5 +159,3 @@ Task3.generateResult = function (){
     console.log (triangles.sort(triangleCompare));
     return triangles.sort(triangleCompare); 
 }
-return Task3;
-})();

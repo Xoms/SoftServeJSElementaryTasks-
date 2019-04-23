@@ -16,18 +16,19 @@ Task5.getParams = function (){
 }
 
 Task5.validateParams = function (context){
-    
+    let errState;
     if (isNaN(+context.min) || isNaN(+context.max)) { 
-        context.errState = 1; //не цифры
+        errState = 1; //не цифры
     } else if (context.min < 0 || context.max < 0) { 
-        context.errState = 2; // <0
-    } else if (context.min.length !== 6 && context.max.length !== 6 ) {
-        context.errState = 3; // не 6 цифр
-    } else if (+context.min == +context.max) {
-        context.errState = 4; // min == max фигня
+        errState = 2; // <0
+    } else if (context.min.length > 6 || context.max.length > 6 ) {
+        errState = 3; // больше 6 цифр
+    } else if (+context.min === +context.max) {
+        errState = 4; // min == max фигня
     } else { 
         context.errState = 0; 
     } // ok
+    return errState;
 
 }
 
@@ -50,9 +51,9 @@ Task5.showErrMsg = function(errState){
 }
 
 Task5.generateTicketNumbers = function(min, max) { 
-    var ticketNumbers = [];
+    let ticketNumbers = [];
     if (min > max) { 
-        var tmp = min;
+        let tmp = min;
         min = max;
         max = min;
     }   
@@ -132,10 +133,10 @@ Task5.compareMethods = function (context){
 }
 
 Task5.showResult = function(context) {
+    resField.style.color = "green";
     resField.innerHTML = "Простой метод: " + context.simpleResult + "<br>" +
                          "Сложный метод: " + context.complexResult + "<br>";
     switch (context.resultId) {
-
         case 1: 
             resField.innerHTML += "Простым методом выбрано больше билетов";
             break;

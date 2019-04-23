@@ -1,51 +1,39 @@
-let Task3 = {};
-
-let triangles = [];
-const resField = document.getElementById("resTask3");
+let Task3 = {}; //object with methods for this task
+let triangles = []; //array of objects of triangles
+const resField = document.querySelectorAll(".resField")[2];
 const inpField = document.querySelectorAll(".dataInput")[2]; 
 
 
 Task3.getParams = function () {
-    let triangle = {}; //текущий треугольник
-    let inputs = document.querySelectorAll("input");
+    let triangle = {}; //current triangle
+    let inputs = inpField.querySelectorAll("input");
 
     triangle.vertices = inputs[0].value; 
-    triangle.a = parseFloat(inputs[1].value); 
-    triangle.b = parseFloat(inputs[2].value);
-    triangle.c = parseFloat(inputs[3].value);    
+    triangle.a = +inputs[1].value; 
+    triangle.b = +inputs[2].value;
+    triangle.c = +inputs[3].value; 
+    console.log (triangles);   
     return triangle;   
 
 }
 
-Task3.pushTriangle = function(triangle) {
-//Получает треугольник и добавляет его в текущий массив
-//triangle уже валидный   
-    triangles.push (triangle);    
-}
+//================================== Validation ===============================
 
-
-
-//==================================== Проверки ===============================
-
-Task3.validateParams = function (triangle) {    
-    //Для всех полей сразу  
-
+Task3.validateParams = function (triangle) {
     //NaN
-    if (isNaN(triangle.a) || isNaN(triangle.b) || isNaN(triangle.c)) {
+    if (isNaNArgs(triangle.a, triangle.b, triangle.c)) {
         errState = 1;
 
     // <0
-    } else if (triangle.a <= 0 || triangle.b <= 0 || triangle.c <= 0) {
-        errState = 2; 
+    } else if (!isPositive(triangle.a, triangle.b, triangle.c)) {
+        errState = 2;
 
-    //Не треугольник    
-    } else if ( (triangle.a + triangle.b) <= triangle.c || 
-            (triangle.b + triangle.c) <= triangle.a || 
-            (triangle.a + triangle.c) <= triangle.b ) {    
+    //Not a triangle    
+    } else if (!isTriangle(triangle.a, triangle.b, triangle.c)) {    
         errState = 4;
 
-    //Символов в вершинах >3 или не большие латинские
-    // Или одинаковые
+    //Symbols in vertices not 3 || not [A-Z] 
+    // or there are equal symbols
     } else if (triangle.vertices.length !== 3 || 
                triangle.vertices.search(/[A-Z]{3}/) === -1 ||
                triangle.vertices[0] === triangle.vertices[1] ||
@@ -54,10 +42,10 @@ Task3.validateParams = function (triangle) {
                { 
         errState = 5;
 
-    //Ошибок ввода нет    
+    //No errors    
     } else { errState = 0; }
-    
-    //Существует треугольник с задаными вершинами
+
+    //Triangle with this vertices aready exists
     for (var i = 0; i < triangles.length; i++){
         if (triangle.vertices == triangles[i].vertices) {
             errState = 6;        
@@ -71,16 +59,14 @@ Task3.validateParams = function (triangle) {
         в данном задании не применяется
     4 - такого треугольника не существует(Task3)                     
     5 - не 3 символа в названии вершин(Task3)
-    6 - Треугольник с такими вершинами есть (Task3)
-    7 - Массив пустой (будет ТОЛЬКО при нажатии кнопки "Сортировать"(runTask3))
-    0 - ok; 
-    Другие цифры считаются ошибкой (для тестов)*/
+    6 - Треугольник с такими вершинами есть (Task3)    
+    0 - ok; */    
 }
 
-//=========== Вывод сообщений ===============
+//============================ Messages =======================================
 
 Task3.showCurrentArray = function() {
-    // Выводит массив в див результата (массив из замыкания)
+    // triangles - current array from closure
     resField.style.color = "green";
     resField.innerHTML = "Текущий массив: ";
 
@@ -88,7 +74,7 @@ Task3.showCurrentArray = function() {
         resField.innerHTML += `{ ${triangles[i].vertices} 
             , ${triangles[i].a}  
             , ${triangles[i].b}  
-            , ${triangles[i].c} }`;
+            , ${triangles[i].c} } <br>`;
     }
 }
 
@@ -98,23 +84,21 @@ Task3.showErrMsg = function (errState) {
     
     switch (errState){
         case 1 : 
-            resField.innerHTML = "Стороны должны быть числом";
+            resField.innerHTML = `Стороны должны быть числом`;
             break;
         case 2 : 
-            resField.innerHTML = "Cтороны не положительное число!";
+            resField.innerHTML = `Cтороны не положительное число!`;
             break;
         case 4 : 
-            resField.innerHTML = "Треугольник не существует";
+            resField.innerHTML = `Треугольник не существует`;
             break;
         case 5 : 
-            resField.innerHTML = "Название должно стостоять из 3-х БОЛЬШИХ" +
-            " и РАЗНЫХ латинских символов!";
+            resField.innerHTML = `Название должно стостоять из 3-х БОЛЬШИХ
+             и РАЗНЫХ латинских символов!`;
             break;
         case 6 : 
-            resField.innerHTML = "Такой есть!";
-            break;
-        case 7 :
-            resField.innerHTML = "Сначала задайте треугольники";
+            resField.innerHTML = `Такой есть!`;
+            break;                    
     }   
 }
 
@@ -123,39 +107,55 @@ Task3.showResult = function (result) {
     console.log(result);
     resField.style.color = "green";
     resField.innerHTML = "";
-    for (var i = 0; i < result.length; i++){
-        resField.innerHTML += result[i].vertices + ", s = " +
-            result[i].s + "<br>";
-    }
-    
+    if (result.length === 0) {
+        resField.innerHTML = `Сначала задайте треугольники`;
+    } else {
+        for (var i = 0; i < result.length; i++){
+            resField.innerHTML += `${result[i].vertices}, s = 
+                ${result[i].s} <br>`;
+        }
+    }    
 }
 
+//=============================== Calculations ================================
+Task3.pushTriangle = function(triangle) {
+//adds current triangle to array of triangles
+//triangle passed validation   
+    triangles.push (triangle);    
+}
 
+//half of perimeter
+Task3.getHalfP = function(a, b, c){           
+    return (a + b + c)/2;
+}
+//Square for triangles
+Task3.getSquare = function (a, b, c, halfP) {
+    return Math.sqrt(halfP * (halfP - a) *
+            (halfP - b) * (halfP - c));
+}
 
-//=================================== Расчеты =================================
+Task3.generateResult = function (triangles){
+    //triangles  - array of triangle objects
+    //function "knows" about it from closure
+    let halfP; 
 
-Task3.generateResult = function (){
-    //triangles  - массив треугольников
-    //функция "знает" о нём из замыкания
-    var halfP; //полупериметр
-
-    //Получим площадь треугольников
+    //get S for all triangles
     for (var i = 0; i < triangles.length; i++){       
-        halfP = (triangles[i].a + triangles[i].b + triangles[i].c)/2; 
+        halfP = Task3.getHalfP(triangles[i].a, triangles[i].b, 
+            triangles[i].c); 
         //console.log (halfP);
-        //По формуле Герона
-        triangles[i].s = Math.sqrt(halfP * (halfP - triangles[i].a) *
-            (halfP - triangles[i].b) * (halfP - triangles[i].c));
-        //и добавим к объекту с каждым треугольником
-        console.log (triangles[i].s);
+        
+        triangles[i].s = Task3.getSquare(triangles[i].a, triangles[i].b, 
+            triangles[i].c, halfP);
+        //and add it for every triangle object as property .s
+        //console.log (triangles[i].s);
     }   
 
-    //Функция сортировки
-    function triangleCompare (tr1, tr2) { 
-        //tr == arr[i].tr 
-        //tr.s == площадь текущего треугольника
+    //function for sort
+    function triangleCompare (tr1, tr2) {         
         return tr1.s - tr2.s; 
     }
-    console.log (triangles.sort(triangleCompare));
+    //console.log (triangles.sort(triangleCompare));
+
     return triangles.sort(triangleCompare); 
 }

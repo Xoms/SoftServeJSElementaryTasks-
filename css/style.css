@@ -1,5 +1,5 @@
 
-h1 {text-align: center;}
+.header > h1 {text-align: center;}
 /* ============= Navigation ================== */
 .nav {
     height: 100 px;

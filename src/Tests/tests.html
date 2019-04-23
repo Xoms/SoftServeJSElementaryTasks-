@@ -5,11 +5,28 @@
   <title> JS Elementary Tasks - tests </title>  
   <meta charset="utf-8">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- подключаем стили Mocha, для отображения результатов -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+  <!-- подключаем библиотеку Mocha -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+  <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+  <script>
+    mocha.setup('bdd');
+  </script>
+  <!-- подключаем chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <!-- в chai есть много всего, выносим assert в глобальную область -->
+  <script>
+    var assert = chai.assert;
+  </script>
 
 </head>
 
 <body>
-    <h1>JS Elementary Tasks WebUI - 162</h1>
+    <div class = "header">
+        <h1>JS Elementary Tasks WebUI - 162 Tests</h1>
+    </div>
     <!-- NAVIGATION -->
     <div class = "nav">        
         <ul>
@@ -21,6 +38,12 @@
             <li><a href="T6Test/t6tests.html">Числовая последовательность</a></li>
             <li><a href="T7Test/t7tests.html">Ряд Фибоначчи для диапазона</a></li>
             <li><a href="/index.html"> Задачи </a></li>
-        </ul> 
-    </div>
+        </ul>
+    </div> 
+
+    <div id = "mocha"> </div>
+
+
+    <script type="text/javascript" src="/src/validation.js"></script>
+    <script type="text/javascript" src="commonTest.js"></script>
 </body>

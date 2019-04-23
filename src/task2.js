@@ -21,7 +21,7 @@ let Task2 = (function () {
 let Task2 = {};
 
 const inputField = document.querySelectorAll(".dataInput")[1];
-const resField = document.getElementById("resTask2"); //Поле вывода результатов
+const resField = document.querySelectorAll(".resField")[1]; //Поле вывода результатов
                                                     //или ошибок 
 
 //Получение исходных данных
@@ -30,10 +30,10 @@ Task2.getParams = function () {
     let envelope1 = {};
     let envelope2 = {};
        
-    envelope1.ab = parseFloat(inputs[0].value);
-    envelope1.cd = parseFloat(inputs[1].value);
-    envelope2.ab = parseFloat(inputs[2].value);
-    envelope2.cd = parseFloat(inputs[3].value);
+    envelope1.ab = +(inputs[0].value);
+    envelope1.cd = +(inputs[1].value);
+    envelope2.ab = +(inputs[2].value);
+    envelope2.cd = +(inputs[3].value);
     //console.log (envelope1.ab);
 
     return [envelope1, envelope2];

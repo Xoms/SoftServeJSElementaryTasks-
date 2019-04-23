@@ -9,7 +9,9 @@
 </head>
 
 <body>
-	<h1>JS Elementary Tasks WebUI - 162</h1>
+	<div class = "header">
+		<h1>JS Elementary Tasks WebUI - 162</h1>
+	</div>
 	<!-- NAVIGATION -->
 	<div class = "nav">		
 		<ul>
@@ -41,22 +43,22 @@
 		<em>Входные параметры:</em> длина, ширина, символ для отображения.<br>
 		<div class = "dataInput"> 
 			Длина:
-			<input type = "text" id = "task1Length" value="3" 
+			<input type = "text" value="3" 
 			 oninput(validateParamsT1())>
 			</input> 
 			<span id = "validateTask1Length"></span>
 			<br> 
 		
 			Ширина:
-			<input type = "text" id = "task1Width" value = "3"></input> 
+			<input type = "text" value = "3"></input> 
 			<span id = "validateTask1Width"></span>
 			<br>
 			Символ:
-			<input type = "text" id = "task1Symbol" value = "*"></input> 
+			<input type = "text" value = "*"></input> 
 			<span id = "validateTask1Symbol"></span>
 		</div>
 		<em>Выход:</em> строка с представлением шахматной доски <br>		
-		<button onclick = "runTask1()">Go</button>
+		<button onclick = "runTask1()">Понеслась</button>
 		<div class = "resField" id = "resTask1"></div>
 		<hr>
 		</div>
@@ -165,6 +167,7 @@
 			<input type = "text" id = "palindrome" value="1234437">				
 			</input>
 		<button onclick = "runTask4()"> Понеслась</button>
+		<br>
 		<em>Выход:</em> извлечённый из числа палиндром либо 0, если извлечение 
 		не удалось. <br>		
 		<div class = "resField" id = "resTask4"></div>
@@ -221,10 +224,10 @@
 		<div class = "dataInput">
 
 			Длина (кол-во цифр):
-			<input type = "text" id = "leпgthInpField" value ="6"> </input>
+			<input type = "text" id = "leпgthInpField" value ="3"> </input>
 			<br>
 			До числа:
-			<input type = "text" id = "numInpField" value = "999999"> </input>
+			<input type = "text" id = "numInpField" value = "1000"> </input>
 		</div>
 
 		<em>Выход:</em> строка с рядом чисел <br>
@@ -265,7 +268,7 @@
 	</div>
 </div>
 
-
+<script type="text/javascript" src="src/validation.js"></script>
 <script type="text/javascript" src="src/task1.js"></script>
 <script type="text/javascript" src="src/task2.js"></script>
 <script type="text/javascript" src="src/task3.js"></script>

@@ -1,16 +1,16 @@
 let Task7 = ( function (){
 
 let Task7 = {};
-const inputField = document.querySelectorAll(".dataInput");
+const inputField = document.querySelectorAll(".dataInput")[6];
 const resField = document.getElementById("resTask7");
-let context = {};
+
 
 
 Task7.getParams = function (){
     let context = {};
-    context.len = inputField[6].querySelectorAll("input")[0].value; 
-    context.from = inputField[6].querySelectorAll("input")[1].value;
-    context.to = inputField[6].querySelectorAll("input")[2].value;
+    context.len = +inputField.querySelectorAll("input")[0].value; 
+    context.from = +inputField.querySelectorAll("input")[1].value;
+    context.to = +inputField.querySelectorAll("input")[2].value;
     return context;
 }
 

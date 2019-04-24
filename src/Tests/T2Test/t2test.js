@@ -1,4 +1,4 @@
-describe ("Testing of Task2", function(){
+describe ("Testing of Task2 (envelope entries)", function(){
 
 describe("Task2.validateParams(envelope1, envelope2)", function() {
 
@@ -111,7 +111,8 @@ describe("isDiagEntry(a,b,c,d)", function() {
         actual = isDiagEntry(a,b,c,d);
         assert.equal(expected, actual);
     });
-    it("Вычисляет вхождение конверта #2 по диагонали (не входит, но входит 1-й)", function() {
+    it("Вычисляет вхождение конверта #2 по диагонали (не входит, но входит 1-й)",
+     function() {
     //inputs
         let a = 10; // envelope 1 side a
         let b = 10; // envelope 1 side b
@@ -137,7 +138,8 @@ describe ("Task2.calcEnvelopeEntries(envelope1, envelope2)", function(){
 
         assert.equal (expected, actual);
     });
-    it ("Вычисляет вхождения конвертов друг в друга, входит 1-й, по диагонали", function() {
+    it ("Вычисляет вхождения конвертов друг в друга, входит 1-й, по диагонали",
+     function() {
         let envelope1 = {}; //objects with sides of each envelope
         let envelope2 = {};
         envelope1.ab = 1;
@@ -161,7 +163,8 @@ describe ("Task2.calcEnvelopeEntries(envelope1, envelope2)", function(){
 
         assert.equal (expected, actual);
     });
-    it ("Вычисляет вхождения конвертов друг в друга, входит 2-й, по диагонали", function() {
+    it ("Вычисляет вхождения конвертов друг в друга, входит 2-й, по диагонали", 
+        function() {
         let envelope1 = {}; //objects with sides of each envelope
         let envelope2 = {};
         envelope1.ab = 9;
@@ -173,7 +176,8 @@ describe ("Task2.calcEnvelopeEntries(envelope1, envelope2)", function(){
 
         assert.equal (expected, actual);
     });
-    it ("Вычисляет вхождения конвертов друг в друга, не входит ни один", function() {
+    it ("Вычисляет вхождения конвертов друг в друга, не входит ни один", 
+        function() {
         let envelope1 = {}; //objects with sides of each envelope
         let envelope2 = {};
         envelope1.ab = 10;

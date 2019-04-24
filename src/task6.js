@@ -1,29 +1,31 @@
 let Task6 = (function () {
+//Числовая последовательность
 
 let Task6 = {};
-const inputField = document.querySelectorAll(".dataInput");
-const resField = document.getElementById("resTask6");
-let context = {};
+const resField = document.querySelectorAll(".resField")[5];
+const inpField = document.querySelectorAll(".dataInput")[5];
 
 
-Task6.getParams = function (){
+
+Task6.getParams = function (){ 
+    //len - max lenght of result (x*x)
+    //num - max result of (x*x)  
     let context = {};
-    context.len = inputField[5].querySelectorAll("input")[0].value; 
-    context.num = inputField[5].querySelectorAll("input")[1].value;
-    console.log (context.len);
+    context.len = +inpField.querySelectorAll("input")[0].value; 
+    context.num = +inpField.querySelectorAll("input")[1].value;    
     return context;
 }
 
 Task6.validateParams = function (context){
-    for(let name in context) {
-        if (context[name] < 0 ) {
-            errState = 1;
-        } else if ( isNaN(+context[name])) {
-            errState = 2;
-        } 
-    } 
-    if (!Number.isInteger(+context.len)) {
+    if (isNaNArgs(context.len, context.num)) {
+        errState = 1;
+    } else if (!isPositive(context.len, context.num)) {
+        errState = 2;
+    }   
+    if (!isInteger(context.len)){
         errState = 3;
+    } else if (context.len > 6){
+        errState = 12;
     } else {
         errState = 0;
     }
@@ -42,6 +44,9 @@ Task6.showErrMsg = function(errState) {
             break;
         case 3:
             resField.innerHTML ="Поле 'Длина' должно быть целым числом";
+            break;
+        case 12: 
+            resField.innerHTML ="Поле 'Длина' должно быть <=6";            
     }
 }
 
@@ -80,7 +85,8 @@ function makeArrByNumber (context){
     }
 };
 
-Task6.run = function (context){
+Task6.getResults = function (context){
+    //Executes calculations of each method and returns result;
     makeArrByLength(context);
     makeArrByNumber (context);
     

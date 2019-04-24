@@ -2,21 +2,21 @@ let Task4 = (function () {
 //ПАЛИНДРОМ
 
 let Task4 = {};
-const resField = document.getElementById("resTask4");
+const resField = document.querySelectorAll(".resField")[3];
+const inpField = document.querySelectorAll(".dataInput")[3];
 
 
 Task4.getParams = function () {
-            let params = document.getElementsByClassName('dataInput');
-    
-    return params[3].getElementsByTagName("input")[0].value;
+    let params = +inpField.querySelector(input);    
+    return params;
 }
 
 Task4.validateParams = function (params) {
     let errState;
-    if (isNaN(+params) || +params < 10) {
+    if (isNaN(params) || params < 10 || !isInteger(params)) {
         errState = 1;
     } else {
-errState = 0;
+        errState = 0;
     }
     return errState;
 }
@@ -45,12 +45,13 @@ while (endPos >= 1) {
 
         for ( j = 0; j <= substr.length / 2 + 1; j++) {
             if (!(substr.charAt(j) == substr.charAt(substr.length - j - 1))) {
-                isPolindrome = false;
+                isPalindrome = false;
                 break; //т.к. если хоть один разный дальше нет смысла
             } 
-            isPolindrome = true;          
+            isPalindrome = true;          
         }
-        if (isPolindrome) {
+        if (isPalindrome) {
+            //Палиндром найден, добавим к результату
             result.cnt++;
             result.palindromes += substr + " ";           
         }
@@ -66,7 +67,7 @@ return result;
 }
 
 Task4.showErrMsg = function (errState) {
-    resField.innerHTML = "введенный палиндром не число > 10";
+    resField.innerHTML = "введенный палиндром не целое число > 10";
     resField.style.color = "red";
 }
 Task4.showResult = function (result) {

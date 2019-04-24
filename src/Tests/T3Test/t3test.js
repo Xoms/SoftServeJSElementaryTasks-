@@ -1,6 +1,17 @@
-describe ("Testing of Task3", function(){
+describe ("Testing of Task3 (triangles sorting)", function(){
 
 describe("Task3.validateParams(triangle)", function() {
+    it(`All is ok, errState expected 0`, function() {
+        //inputs
+        let triangle = {}; //object with triangle sides and vertices        
+        triangle.vertices = "ABC";
+        triangle.a = 1;
+        triangle.b = 1;
+        triangle.c = 1;
+        let expected = 0; //errState        
+        let actual = Task3.validateParams(triangle);    
+        assert.equal(expected, actual);
+    });
 
     it(`Sides of triangle isNaN`, function() {
         //inputs

@@ -3,27 +3,26 @@ Task5 = (function () {
 
 let Task5 = {};
 
-let resField = document.getElementById("resTask5");
-
-
+const resField = document.querySelectorAll(".resField")[4];
+const inpField = document.querySelectorAll(".dataInput")[4];
 
 Task5.getParams = function (){
     let context = {};
-    context.min = document.getElementById("minTicketNumber").value;
-    context.max = document.getElementById("maxTicketNumber").value;
-    
+    //ticket numbers
+    context.min = +inpField.querySelectorAll("input")[0].value;
+    context.max = +inpField.querySelectorAll("input")[1].value;    
     return context;
 }
 
 Task5.validateParams = function (context){
     let errState;
-    if (isNaN(+context.min) || isNaN(+context.max)) { 
+    if (isNaNArgs(context.min, context.max)) { 
         errState = 1; //не цифры
     } else if (context.min < 0 || context.max < 0) { 
         errState = 2; // <0
     } else if (context.min.length > 6 || context.max.length > 6 ) {
         errState = 3; // больше 6 цифр
-    } else if (+context.min === +context.max) {
+    } else if (context.min === context.max) {
         errState = 4; // min == max фигня
     } else { 
         context.errState = 0; 
@@ -45,30 +44,34 @@ Task5.showErrMsg = function(errState){
             resField.innerHTML = "Должно быть не больше 6 цифр";
             break;
         case 4 : 
-            resField.innerHTML = "Min не должен быть == Max";        
+            resField.innerHTML = "Min не должен быть = Max";        
     }
 
 }
 
 Task5.generateTicketNumbers = function(min, max) { 
+    //Generates tickets number from min to max
     let ticketNumbers = [];
     if (min > max) { 
         let tmp = min;
         min = max;
         max = min;
     }   
-    for (var i = min; i <= max; i++){
-        var ticketNumber = "" + i;
-        while (ticketNumber.length < 6) {             
+    for (let i = min; i <= max; i++){
+        let ticketNumber = "" + i; //something like toString
+        while (ticketNumber.length < 6) {
+            //add 0's in begining if ticket number not consist of 6 numbers             
             ticketNumber = "0" + ticketNumber;
-
-        } // Добавим 0 если мало цифр
+        }         
         ticketNumbers.push(ticketNumber);
     }    
     return ticketNumbers;
 }
 
 function countSimpleMethod(ticketsArr) {
+    //count tickets by left half === right half
+    //ticketsArr - array with tickets serial numbers
+    //typeOf(ticketsArr[i]) - string
     var cnt = 0;       
     var leftPartSum = 0;
     var rightPartSum = 0;      

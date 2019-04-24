@@ -44,7 +44,7 @@ let Task1 = (function() {
             errState = 1;
         } else if (!isPositive(length, width)) {
             errState = 2;
-        } else if (!Number.isInteger(+length) || !Number.isInteger(+width)){
+        } else if (!isInteger(length, width)){
             errState = 3;
         } else if (symb.length !== 1 || symb === " "){
             errState = 4;

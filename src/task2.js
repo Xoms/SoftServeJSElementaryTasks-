@@ -41,10 +41,11 @@ Task2.getParams = function () {
 
 //Проверка введенных даных
 Task2.validateParams = function (envelope1, envelope2) {
-    return !(envelope1.ab <= 0 || isNaN(envelope1.ab) || 
-        envelope1.cd <= 0 || isNaN(envelope1.cd) ||
-        envelope2.ab <= 0 || isNaN(envelope2.ab) ||
-        envelope2.cd <= 0 || isNaN(envelope2.cd) );
+
+    return !(isPositive(envelope1.ab, envelope1.cd, 
+        envelope2.ab, envelope2.cd) || 
+        !(isNaNArgs(envelope1.ab, envelope1.cd, 
+        envelope2.ab, envelope2.cd)) );       
 }
 
 //Сообщение об ошибке ввода параметров
@@ -87,9 +88,5 @@ Task2.calcEnvelopeEntries = function (env1, env2) {
     
     return res;
 }
-
-//Запрет на изменение свойств и методов Task2 чтоб никто не менял снаружи
-Object.freeze(Task2);
 return Task2;
-
 })();

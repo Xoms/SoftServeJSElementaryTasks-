@@ -1,5 +1,6 @@
 
 //********************Task1 ***************
+//Chess String
 function runTask1(){ 
     //params is array[length, width, symb]
     let result;
@@ -11,13 +12,17 @@ function runTask1(){
         Task1.showErrMsg(errState);            
     } else {
         result = Task1.generateChessStr(...params);
+        console.log (result);
         Task1.showResult(result);
     }
 }
 
 //********************Task2 ***************
+//Envelope analysis
 function runTask2() {            
     let result;
+    /*params[envelope1, envelope2] will be an array of 2 objects which are 
+    describes envelopes; envelope{ab, cd} */
     let params = Task2.getParams();
     console.log (params);
     if (!Task2.validateParams(...params)){
@@ -29,10 +34,13 @@ function runTask2() {
     return;
 }
 
+
 //********************Task3 ***************
+//Sort triangles
+
 //Add current triangle to array of triangles
 function getCurrentTriangle (){    
-    //Getting input params    
+    //Getting input params (it's an object triangle)  
     //triangles - array inside closure Task3
 
     let triangle = Task3.getParams(); 
@@ -65,11 +73,12 @@ function runTask3() {
 }
 
 //********************Task4 ***************
+//Palindromes
 function runTask4() {
     let errState;
     let params = Task4.getParams();
     let result;
-    //let resField = document.getElementById("resTask4").innerHTML = "";
+    //params - just 1 input
 
     console.log (params);
     errState = Task4.validateParams(params);
@@ -81,11 +90,10 @@ function runTask4() {
     }
 }
 //********************Task5 ***************
+//Lucky tickets
 function runTask5() {
-    let context = {}; /*Объект состояния вычислений
-                        хранит исходные данные, коды ошибок,
-                        результаты вычислений */
-   
+    let context = {}; 
+
     context = Task5.getParams();
     let errState;
     console.log (context.min + ' ' + context.max)
@@ -101,7 +109,7 @@ function runTask5() {
 
 }
 //********************Task6 ***************
-
+//Sequence of squares of numbers
 function runTask6() {
     let context = {};
     let errState;
@@ -112,12 +120,13 @@ function runTask6() {
     if (errState) {
         Task6.showErrMsg(errState);
     } else {
-       result = Task6.run(context); 
+       result = Task6.getResults(context); 
        Task6.showResult(result);
     }
 }
 
 //********************Task7 ***************
+//Fibonacci sequence
 function runTask7() {
     let context = {};
     let errState;

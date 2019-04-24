@@ -1,8 +1,7 @@
-//********Переменные**********
 let Task2 = {};
 
 const inputField = document.querySelectorAll(".dataInput")[1];
-const resField = document.getElementById("resTask2"); //Поле вывода результатов
+const resField = document.querySelectorAll(".resField")[1]; //Поле вывода результатов
                                                     //или ошибок 
 
 //Получение исходных данных
@@ -11,10 +10,10 @@ Task2.getParams = function () {
     let envelope1 = {};
     let envelope2 = {};
        
-    envelope1.ab = parseFloat(inputs[0].value);
-    envelope1.cd = parseFloat(inputs[1].value);
-    envelope2.ab = parseFloat(inputs[2].value);
-    envelope2.cd = parseFloat(inputs[3].value);
+    envelope1.ab = +(inputs[0].value);
+    envelope1.cd = +(inputs[1].value);
+    envelope2.ab = +(inputs[2].value);
+    envelope2.cd = +(inputs[3].value);
     //console.log (envelope1.ab);
 
     return [envelope1, envelope2];
@@ -22,10 +21,11 @@ Task2.getParams = function () {
 
 //Проверка введенных даных
 Task2.validateParams = function (envelope1, envelope2) {
-    return !(envelope1.ab <= 0 || isNaN(envelope1.ab) || 
-        envelope1.cd <= 0 || isNaN(envelope1.cd) ||
-        envelope2.ab <= 0 || isNaN(envelope2.ab) ||
-        envelope2.cd <= 0 || isNaN(envelope2.cd) );
+
+    return !(isPositive(envelope1.ab, envelope1.cd, 
+        envelope2.ab, envelope2.cd) || 
+        !(isNaNArgs(envelope1.ab, envelope1.cd, 
+        envelope2.ab, envelope2.cd)) );       
 }
 
 //Сообщение об ошибке ввода параметров
@@ -68,3 +68,4 @@ Task2.calcEnvelopeEntries = function (env1, env2) {
     
     return res;
 }
+

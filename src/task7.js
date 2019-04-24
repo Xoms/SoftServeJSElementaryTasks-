@@ -1,28 +1,25 @@
 let Task7 = ( function (){
 
 let Task7 = {};
-const inputField = document.querySelectorAll(".dataInput")[6];
-const resField = document.getElementById("resTask7");
+const resField = document.querySelectorAll(".resField")[6];
+const inpField = document.querySelectorAll(".dataInput")[6];
 
 
 
 Task7.getParams = function (){
     let context = {};
-    context.len = +inputField.querySelectorAll("input")[0].value; 
-    context.from = +inputField.querySelectorAll("input")[1].value;
-    context.to = +inputField.querySelectorAll("input")[2].value;
+    context.len = +inpField.querySelectorAll("input")[0].value; 
+    context.from = +inpField.querySelectorAll("input")[1].value;
+    context.to = +inpField.querySelectorAll("input")[2].value;
     return context;
 }
 
 Task7.validateParams = function (context){
-    for(let name in context) {
-        if (context[name] < 0 ) {
+    if (isNaNArgs(context.len, context.from, context.to)) {
             errState = 1;
-        } else if ( isNaN(+context[name])) {
-            errState = 2;
-        } 
-    } 
-    if (!Number.isInteger(+context.len)) {
+    } else if ( !isPositive(context.len, context.from, context.to)) {
+            errState = 2;    
+    } else if (!isInteger(context.len)) {
         errState = 3;
     } else {
         errState = 0;
@@ -59,10 +56,10 @@ Task7.showResult = function (context) {
 
 function fibByLen (context){
     context.arrByLength = [1,1];
-    var prev = 1;
-    var cur = 1;
-    var nxtStr = "";         
-    var nxt = cur + prev;
+    let prev = 1;
+    let cur = 1;
+    let nxtStr = "";         
+    let nxt = cur + prev;
 
     while (true){
         nxtStr="" + nxt;
@@ -81,11 +78,11 @@ function fibByLen (context){
 
 function fibInRange (context) {
     context.arrInRange=[];
-    var from = context.from;
-    var to = context.to;    
-    var cur = 1;
-    var prev = 1;
-    var nxt = cur + prev;
+    let from = context.from;
+    let to = context.to;    
+    let cur = 1;
+    let prev = 1;
+    let nxt = cur + prev;
 
     
     while (to >= nxt) {        

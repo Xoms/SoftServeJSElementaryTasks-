@@ -5,15 +5,15 @@ let Task4 = {};
 const resField = document.querySelectorAll(".resField")[3];
 const inpField = document.querySelectorAll(".dataInput")[3];
 
-
 Task4.getParams = function () {
-    let params = +inpField.querySelector(input);    
+    let params = inpField.querySelector("input").value;     
     return params;
 }
 
 Task4.validateParams = function (params) {
     let errState;
-    if (isNaN(params) || params < 10 || !isInteger(params)) {
+    if (isNaN(params) || +params < 10 || !isInteger(+params) || 
+        ((params).length > 10)) {
         errState = 1;
     } else {
         errState = 0;

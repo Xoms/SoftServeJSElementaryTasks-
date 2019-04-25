@@ -42,9 +42,9 @@ Task2.getParams = function () {
 //Проверка введенных даных
 Task2.validateParams = function (envelope1, envelope2) {
 
-    return !(isPositive(envelope1.ab, envelope1.cd, 
+    return !(!isPositive(envelope1.ab, envelope1.cd, 
         envelope2.ab, envelope2.cd) || 
-        !(isNaNArgs(envelope1.ab, envelope1.cd, 
+        (isNaNArgs(envelope1.ab, envelope1.cd, 
         envelope2.ab, envelope2.cd)) );       
 }
 
@@ -67,7 +67,7 @@ Task2.showResult = function (result) {
 }
 
 //для проверки влезания по диагонали
-function isDiagEntry (a,b,c,d) {
+Task2.isDiagEntry = function (a,b,c,d) {
     return ( (a*b>2*c*d) && 
         ((c*c+d*d-b*b)*(c*c+d*d-a*a)<=a*a*b*b-4*a*b*c*d+4*c*c*d*d));
 }; 
@@ -75,12 +75,12 @@ function isDiagEntry (a,b,c,d) {
 //Проверка на влезание конвертов друг вдруга (сопссно вычисления)
 Task2.calcEnvelopeEntries = function (env1, env2) { 
     let res;
-    if ( isDiagEntry(env1.ab, env1.cd, env2.ab, env2.cd) 
+    if ( Task2.isDiagEntry(env1.ab, env1.cd, env2.ab, env2.cd) 
         || (env1.ab > env2.ab && env1.cd > env2.cd) 
         || (env1.cd > env2.ab && env1.ab > env2.cd) ) {
             res = 2; //Вмещается 2-й  
             
-    } else if ( isDiagEntry(env2.ab, env2.cd, env1.ab, env1.cd) 
+    } else if ( Task2.isDiagEntry(env2.ab, env2.cd, env1.ab, env1.cd) 
         || (env2.ab > env1.ab && env2.cd > env1.cd) 
         || (env2.cd > env1.ab && env2.ab > env1.cd) ) {
             res = 1; //Вмещается 1-й

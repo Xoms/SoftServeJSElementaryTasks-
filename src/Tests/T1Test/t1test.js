@@ -1,4 +1,4 @@
-describe ("Testing of Task1 (Generate chess string", function(){
+describe ("Testing of Task1 (Generate chess string)", function(){
 
 describe("Task1.validateParams(length, width, symb)  returns errState", function() {    
 
@@ -7,8 +7,7 @@ describe("Task1.validateParams(length, width, symb)  returns errState", function
         let length = 2; 
         let width = 2; 
         let symb = "*";        
-        let expected = 0;
-        //data are correct
+        let expected = 0;        
         let actual = Task1.validateParams(length, width, symb);    
         assert.equal(expected, actual);
     });
@@ -17,8 +16,7 @@ describe("Task1.validateParams(length, width, symb)  returns errState", function
         let length = "af"; 
         let width = "dfg"; 
         let symb = "*";        
-        let expected = 1;
-        //data are correct
+        let expected = 1;        
         let actual = Task1.validateParams(length, width, symb);    
         assert.equal(expected, actual);
     });
@@ -28,7 +26,6 @@ describe("Task1.validateParams(length, width, symb)  returns errState", function
         let width = 0; 
         let symb = "*";        
         let expected = 2;
-        //data are correct
         let actual = Task1.validateParams(length, width, symb);    
         assert.equal(expected, actual);
     });
@@ -37,8 +34,7 @@ describe("Task1.validateParams(length, width, symb)  returns errState", function
         let length = 1.5; 
         let width = .5; 
         let symb = "*";        
-        let expected = 3;
-        //data are correct
+        let expected = 3;        
         let actual = Task1.validateParams(length, width, symb);    
         assert.equal(expected, actual);
     });    
@@ -48,7 +44,6 @@ describe("Task1.validateParams(length, width, symb)  returns errState", function
         let width = 2; 
         let symb = " ";        
         let expected = 4;
-        //data are correct
         let actual = Task1.validateParams(length, width, symb);    
         assert.equal(expected, actual);
     });
@@ -57,8 +52,7 @@ describe("Task1.validateParams(length, width, symb)  returns errState", function
         let length = 2; 
         let width = 2; 
         let symb = "";        
-        let expected = 4;
-        //data are correct
+        let expected = 4;        
         let actual = Task1.validateParams(length, width, symb);    
         assert.equal(expected, actual);
     });
@@ -67,8 +61,7 @@ describe("Task1.validateParams(length, width, symb)  returns errState", function
         let length = 2; 
         let width = 2; 
         let symb = "as";        
-        let expected = 4;
-        //data are correct
+        let expected = 4;        
         let actual = Task1.validateParams(length, width, symb);    
         assert.equal(expected, actual);
     });
@@ -80,8 +73,7 @@ describe("Task1.generateChessStr(length, width, symb)  returns string", function
         let length = 1; 
         let width = 1; 
         let symb = "*";        
-        let expected = `*\n`;
-        //data are correct
+        let expected = `*\n`;        
         let actual = Task1.generateChessStr(length, width, symb);    
         assert.strictEqual(expected, actual);
     });
@@ -90,8 +82,7 @@ describe("Task1.generateChessStr(length, width, symb)  returns string", function
         let length = 2; 
         let width = 2; 
         let symb = "*";        
-        let expected = `*  *\n  *  *\n`;
-        //data are correct
+        let expected = `*  *\n  *  *\n`;        
         let actual = Task1.generateChessStr(length, width, symb);    
         assert.strictEqual(expected, actual);
     });

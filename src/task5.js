@@ -9,8 +9,8 @@ const inpField = document.querySelectorAll(".dataInput")[4];
 Task5.getParams = function (){
     let context = {};
     //ticket numbers
-    context.min = +inpField.querySelectorAll("input")[0].value;
-    context.max = +inpField.querySelectorAll("input")[1].value;    
+    context.min = inpField.querySelectorAll("input")[0].value;
+    context.max = inpField.querySelectorAll("input")[1].value;    
     return context;
 }
 

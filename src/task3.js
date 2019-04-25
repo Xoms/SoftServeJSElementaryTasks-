@@ -137,7 +137,7 @@ Task3.getSquare = function (a, b, c, halfP) {
             (halfP - b) * (halfP - c));
 }
 
-Task3.generateResult = function (triangles){
+Task3.generateResult = function (){
     //triangles  - array of triangle objects
     //function "knows" about it from closure
     let halfP; 

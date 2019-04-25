@@ -21,9 +21,11 @@ Task7.validateParams = function (context){
             errState = 2;    
     } else if (!isInteger(context.len)) {
         errState = 3;
+    } else if (context.len > 6) {
+        errState = 12;
     } else {
         errState = 0;
-    }
+    }    
     return errState;
 }
 
@@ -39,6 +41,9 @@ Task7.showErrMsg = function(errState) {
             break;
         case 3:
             resField.innerHTML ="Поле 'Длина' должно быть целым числом";
+            break;
+        case 12: 
+            resField.innerHTML ="Длина не должна быть > 6";           
     }
 }
 Task7.showResult = function (context) {

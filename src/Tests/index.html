@@ -1,0 +1,281 @@
+ <!DOCTYPE html>
+<html>
+
+<head>  
+  <title> JS Elementary Tasks </title>	
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<div class = "header">
+		<h1>JS Elementary Tasks WebUI - 162</h1>
+	</div>
+	<!-- NAVIGATION -->
+	<div class = "nav">		
+		<ul>
+			<li><a href="#task1">Шахматная доска</a></li>
+			<li><a href="#task2">Анализ конвертов</a></li>
+			<li><a href="#task3">Сортировка треугольников</a></li>
+			<li><a href="#task4">Палиндром</a></li>
+			<li><a href="#task5">Счастливые билеты</a></li>
+			<li><a href="#task6">Числовая последовательность</a></li>
+			<li><a href="#task7">Ряд Фибоначчи для диапазона</a></li>
+			<li><a href="src/Tests/tests.html"> Тесты </a></li>
+		</ul> 
+	</div>
+
+	<!-- *****************************Tasks 1*******************************-->
+<div class = "content">
+	<div class = "statement" id = "task1">
+		<div>
+		<h2>1. Шахматная доска</h2>
+		Вывести шахматную доску с заданными размерами высоты и ширины, 
+		по принципу: 
+		<pre> 
+			*  *  *  *  *  *
+ 			  *  *  *  *  *  *  
+			*  *  *  *  *  *
+			  *  *  *  *  *  *
+  		</pre> 
+  		
+		<em>Входные параметры:</em> длина, ширина, символ для отображения.<br>
+		<div class = "dataInput"> 
+			Длина:
+			<input type = "text" value="3" 
+			 oninput(validateParamsT1())>
+			</input> 
+			<span id = "validateTask1Length"></span>
+			<br> 
+		
+			Ширина:
+			<input type = "text" value = "3"></input> 
+			<span id = "validateTask1Width"></span>
+			<br>
+			Символ:
+			<input type = "text" value = "*"></input> 
+			<span id = "validateTask1Symbol"></span>
+		</div>
+		<em>Выход:</em> строка с представлением шахматной доски <br>		
+		<button onclick = "runTask1()">Понеслась</button>
+		<div class = "resField" id = "resTask1"></div>
+		<hr>
+		</div>
+	</div>
+
+	<!-- *****************************Tasks 2*******************************-->
+	<div class = "statement" id = "task2">
+		<div>
+		<h2>2. Анализ конвертов</h2>
+		Есть два конверта со сторонами (a,b) и (c,d). Требуется определить, 
+		можно ли один конверт вложить в другой. Программа должна 
+		обрабатывать ввод чисел с плавающей точкой. 
+		<br>
+		<br>
+		<em>Входные параметры:</em> объекты конверт1 и конверт2 
+		
+		<div class = "dataInput">
+			Конверт №1: 
+			<br>
+			Сторона a,b 
+			<input type = "text" value = "0"> </input>
+			<br>
+			Сторона c,d			
+			<input type = "text" value = "0"> </input>
+			<br>
+			Конверт №2: 
+			<br>
+			Сторона a,b
+			<input type = "text" value = "0"> </input>
+			<br>
+			Сторона c,d
+			<input type = "text" value = "0"> </input>
+		</div>
+		<em>Выход:</em> номер конверта который можно вложить, если 
+		вложение возможно, 0 – если вложение невозможно.
+		<br>		
+		<button onclick = "runTask2()">Впихнуть</button>
+		<div class = "resField" id = "resTask2"></div>
+		<hr>
+		</div>
+	</div>
+
+	<!-- *****************************Tasks 3*******************************-->
+	<div class = "statement" id = "task3">
+		<div>
+			<h2>3. Сортировка треугольников</h2>
+			Вывести треугольники в порядке убывания их площади.
+			<br>
+			<br>
+			<em>Входные параметры:</em> массив объектов треугольник <br>
+			<em>Выход:</em> упорядоченный массив имён треугольников <br>
+			<em><b>Примечание:</b></em>
+			<ul>
+				<li>Расчёт площади треугольника должен производится по формуле
+				 Герона.</li>
+				<li>Каждый треугольник определяется именами вершин и длинами его
+				 сторон. </li>
+				<li>Приложение должно обрабатывать ввод чисел с плавающей точкой:
+				<br>
+					<pre>
+						{ 
+						vertices: ‘ABC’,
+						a: 10,
+						b: 20,
+						c: 22.36
+						}
+					</pre>
+				</li>
+			</ul>
+
+			<div class = "dataInput">
+				Вершины треугольника (например ABC || CDE || BLA и т.п три символа)
+				<br>
+				<input type = "text" id = "vertices" value = "ABC"> </input>
+				<br>
+				Сторона a
+				<input type = "text" id = "side_a" value ="1"> </input>
+				<br>
+				Сторона b
+				<input type = "text" id = "side_b" value = "1"> </input>
+				<br>
+				Сторона c
+				<input type = "text" id = "side_c" value = "1"> </input>
+			</div>
+			<button onclick = "getCurrentTriangle()"> Добавить треугольник </button>
+			
+			<button onclick = "runTask3()"> Сортировать </button> 
+			
+			<div class = "resField" id = "resTask3"></div>
+			<hr>
+		</div>
+	</div>
+
+	<!-- *****************************Tasks 4*******************************-->
+	<div class = "statement" id = "task4">
+		<div>
+		<h2>4. Палиндром</h2>
+		Проверить является ли число или его часть палиндромом. Например, число 
+		1234437 не является палиндромом, но является палиндромом его часть 
+		3443, а также 44. 
+		Числа меньшие, чем 10 палиндромом не считать.
+		<br>
+		<em>Входные параметры:</em> число
+		<div class = "dataInput"> 
+			Введите число:
+			<input type = "text" id = "palindrome" value="1234437">				
+			</input>
+		<button onclick = "runTask4()"> Понеслась</button>
+		<br>
+		<em>Выход:</em> извлечённый из числа палиндром либо 0, если извлечение 
+		не удалось. <br>		
+		<div class = "resField" id = "resTask4"></div>
+		<hr>
+		</div>
+	</div>
+
+	<!-- *****************************Tasks 5*******************************-->
+	<div class = "statement" id = "task5">
+		<div>
+		<h2>5. Счастливые билеты</h2>
+		Есть 2 способа подсчёта счастливых билетов: <br>
+		<em>1. Простой — если на билете напечатано шестизначное число, и сумма
+		 первых трёх цифр равна сумме последних трёх, то этот билет считается 
+		 счастливым. </em>
+		<em>2. Сложный — если сумма чётных цифр билета равна сумме нечётных 
+			цифр билета, то билет считается счастливым.</em> <br>
+
+		Определить программно какой вариант подсчёта счастливых билетов даст 
+		их большее количество на заданном интервале. <br>
+
+		<em>Входные параметры:</em> объект context с полями min и max <br>
+			<pre>  
+				min &#8805; 0  <!-- >= -->
+				max  &#8804; 999999 <!-- <= -->
+			</pre>
+		
+		<div class = "dataInput">
+			Min номер билета:
+			<input type = "text" id = "minTicketNumber" placeholder ="0 or 000000">
+			</input>
+			<br>
+			Max номер билета:
+			<input type = "text" id = "maxTicketNumber" placeholder = "999999">
+			</input>
+		</div>
+
+		<em>Выход:</em> объект с информацией о победившем методе и количестве 
+		счастливых билетов для каждого способа подсчёта. <br>
+		<button onclick = "runTask5()">Подсчитать билеты </button> <br>
+		<div class = "resField" id = "resTask5"></div>
+		<hr>
+		</div>
+	</div>
+
+	<!-- *****************************Tasks 6*******************************-->
+	<div class = "statement" id = "task6">
+		<div>
+		<h2>6. Числовая последовательность</h2>
+		Вывести через запятую ряд длиной n, состоящий из натуральных чисел, 
+		квадрат которых не меньше заданного m. <br>
+
+		<em>Входные параметры:</em> длина и значение минимального квадрата <br>
+		<div class = "dataInput">
+
+			Длина (кол-во цифр):
+			<input type = "text" id = "leпgthInpField" value ="3"> </input>
+			<br>
+			До числа:
+			<input type = "text" id = "numInpField" value = "1000"> </input>
+		</div>
+
+		<em>Выход:</em> строка с рядом чисел <br>
+
+		<button onclick = "runTask6()">Go</button> <br>
+		<div class = "resField" id = "resTask6"></div>
+		<hr>
+		</div>
+	</div>
+
+	<!-- *****************************Tasks 7*******************************-->
+	<div class = "statement" id = "task7">
+		<div>
+		<h2>7. Ряд Фибоначчи для диапазона</h2>
+		Вывести все числа Фибоначчи, которые удовлетворяют переданному в 
+		функцию ограничению: находятся в указанном диапазоне, либо имеют 
+		указанную длину. <br>
+
+		<em>Входные параметры:</em> объект context с полями min и max, 
+		либо с полем length
+
+		<div class = "dataInput">
+			По кол-ву чисел в результате (length):
+			<input type = "text" id = "fibLen" value ="0"> </input>
+			<br>
+			От min:
+			<input type = "text" id = "fibMin" value = "0"> </input>
+			<br>
+			До max:
+			<input type = "text" id = "fibMax" value = "0"> </input>
+		</div>
+
+		<em>Выход:</em> массив чисел<br>
+
+		<button onclick = "runTask7()">Go</button> <br>
+		<div class = "resField" id = "resTask7"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="src/common.js"></script>
+<script type="text/javascript" src="src/task1.js"></script>
+<script type="text/javascript" src="src/task2.js"></script>
+<script type="text/javascript" src="src/task3.js"></script>
+<script type="text/javascript" src="src/task4.js"></script>
+<script type="text/javascript" src="src/task5.js"></script>
+<script type="text/javascript" src="src/task6.js"></script>
+<script type="text/javascript" src="src/task7.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

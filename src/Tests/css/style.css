@@ -1,0 +1,38 @@
+
+.header > h1 {text-align: center;}
+/* ============= Navigation ================== */
+.nav {
+    height: 100 px;
+    background-color:  black;    
+    text-shadow: 1px, 1px, 2px grey;
+    font-size: 20px; /*1.2em*/  
+    text-align: center;
+    position: -webkit-sticky; /*Safari*/
+    position: sticky;
+    top: 0;
+}
+.nav > ul > li { display: inline-block;
+                padding: 10px;}
+
+.nav > ul > li > a {text-decoration: none;
+                    color: white;                   
+                   }
+
+.nav >ul > li > a:hover {background-color: #cccccc;}
+/* ========================= Content ========================*/
+.content {
+    
+}
+
+/* ========================= Statements =====================*/
+
+#vertices {margin-left: 91px;}
+
+/* ========================= Data Input Fields ============== */
+.dataInput {margin: 10px;}
+
+.dataInput > input {padding: 5px, 2px, 5px, 2px;
+                    margin-left: 20px;
+                    margin-bottom: 5px;
+                    }
+

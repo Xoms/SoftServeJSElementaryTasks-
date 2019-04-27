@@ -96,6 +96,7 @@ function runTask5() {
 
     context = Task5.getParams();
     let errState;
+    let res;
     console.log (context.min + ' ' + context.max)
     errState = Task5.validateParams(context);    
 
@@ -103,10 +104,9 @@ function runTask5() {
         Task5.showErrMsg(errState);
     } else {
         context.ticketsArr = Task5.generateTicketNumbers(context.min, context.max);
-        Task5.compareMethods(context);
-        Task5.showResult(context);
+        res = Task5.compareMethods(context);
+        Task5.showResult(res);
     }
-
 }
 //********************Task6 ***************
 //Sequence of squares of numbers

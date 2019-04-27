@@ -21,8 +21,7 @@ Task6.validateParams = function (context){
         errState = 1;
     } else if (!isPositive(context.len, context.num)) {
         errState = 2;
-    }   
-    if (!isInteger(context.len)){
+    } else if (!isInteger(context.len)){
         errState = 3;
     } else if (context.len > 6){
         errState = 12;
@@ -64,9 +63,9 @@ function makeArrByLength (context){
 
 
     while (true) {
-        current=String(num*num);
+        current=num*num;
         
-        if (current.length <= context.len){
+        if (current.toString().length <= context.len){
             context.arrByLength.push(num);
             num++;
         } else { 

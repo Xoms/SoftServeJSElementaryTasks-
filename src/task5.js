@@ -20,12 +20,12 @@ Task5.validateParams = function (context){
         errState = 1; //не цифры
     } else if (context.min < 0 || context.max < 0) { 
         errState = 2; // <0
-    } else if (context.min.length > 6 || context.max.length > 6 ) {
+    } else if (context.min.toString().length > 6 || context.max.toString().length > 6 ) {
         errState = 3; // больше 6 цифр
     } else if (context.min === context.max) {
         errState = 4; // min == max фигня
     } else { 
-        context.errState = 0; 
+        errState = 0; 
     } // ok
     return errState;
 
@@ -125,21 +125,23 @@ function countComplexMethod(ticketsArr) {
 Task5.compareMethods = function (context){
     context.simpleResult =  countSimpleMethod(context.ticketsArr);
     context.complexResult = countComplexMethod(context.ticketsArr);
-     
+    let resultId; 
+
     if (context.simpleResult - context.complexResult > 0) {
-        context.resultId = 1;
+        resultId = 1;
     } else if (context.simpleResult - context.complexResult < 0) {
-        context.resultId = 2; 
+        resultId = 2; 
     } else { 
-        context.resultId = 0;
-    }    
+        resultId = 0;
+    }
+    return resultId;  
 }
 
-Task5.showResult = function(context) {
+Task5.showResult = function(res) {
     resField.style.color = "green";
     resField.innerHTML = "Простой метод: " + context.simpleResult + "<br>" +
                          "Сложный метод: " + context.complexResult + "<br>";
-    switch (context.resultId) {
+    switch (res) {
         case 1: 
             resField.innerHTML += "Простым методом выбрано больше билетов";
             break;

@@ -1,8 +1,8 @@
-describe ("Testing of Task7 (Sequence of squares of numbers)", function(){
+describe ("Testing of Task7 (Fibonacci sequence)", function(){
 
 describe(`Task7.validateParams(context) where context is object 
-    with length of digits of max square (len), 
-    and max square (num) `, function() {
+    with length of digits of max fibonacci number (len), 
+    and fibonacci numbers in range (from...to) `, function() {
 
     it(`All is ok, errState expected 0`, function() {
         //inputs
@@ -57,7 +57,7 @@ describe(`Task7.validateParams(context) where context is object
 });
 describe(`Task7.run(context) where context is object 
     with length of digits of max fibonacci number (len), 
-    and max fibonacci numbers (from .. to), will calculate arrays with help of 
+    and max fibonacci numbers in range (from .. to), will calculate arrays with help of 
     functions inside of closure `, function() {
 
     it(`array calculated ByLen (expectedByLen) = [1,1,2,3,5,8,13,21,34,55,89]
